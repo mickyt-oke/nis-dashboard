@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c611bd00-c9e6-4b39-a709-5011ccb9e378" name="https://github.com/mickyt-oke/Dashboard.git" url="https://github.com/mickyt-oke/Dashboard.git">
+        <fileTransfer accessType="LOCAL" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

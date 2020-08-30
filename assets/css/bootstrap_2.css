@@ -2067,6 +2067,7 @@ pre code {
     margin-left: 0;
   }
 }
+/*
 table {
   background-color: transparent;
 }
@@ -2307,6 +2308,8 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+
+*/
 fieldset {
   min-width: 0;
   padding: 0;

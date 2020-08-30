@@ -105,7 +105,7 @@ function isAdmin(){
 }
 
 function isLoginSessionExpired(){
-    $login_session_duration = 6000;
+    $login_session_duration = 5000;
     $current_time = time();
     if(isset($_SESSION['loggedin_time']) and isset($_SESSION["profile"])){
         if(((time() - $_SESSION['loggedin_time']) >$login_session_duration)){

@@ -90,14 +90,14 @@ redirectTo ('dash.php');
 											<div class="row align-items-center">
 												<div class="col">
 													<h6 class="text-uppercase text-muted ls-1 mb-1">Overview</h6>
-													<h2 class="mb-0">Missions Performance by Continent</h2>
+													<h2 class="mb-0">Missions Monthly Data</h2>
 												</div>
 											</div>
 										</div>
 										<div class="">
-											<div id="Highchart8" class="chartsh"></div>
+
                                             <div class="col-xl-12">
-                                            <table class="table card-table table-vcenter text-nowrap align-items-center">
+                                            <table class="table card-table ta<div id="Highchart8" class="chartsh"></div>ble-vcenter text-nowrap align-items-center">
 												<thead class="thead-light">
 												<tr>
                                                     <td>Continent</td>

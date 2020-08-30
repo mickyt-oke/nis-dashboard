@@ -1,9 +1,4 @@
 <?php require_once 'core/init.php'; ?>
-<?php admin(); 
-        if (!isAdmin()){
-        redirectTo ('../dash.php');
-        }
-?>
 
 <?php include_once 'inc/header.php'; 
 ?>

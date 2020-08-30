@@ -95,10 +95,7 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label"> Applications/Requests</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="change-of-data.php" class="slide-item">Change of Data</a>
-								</li>
-								<li>
-									<a href="application-request.php" class="slide-item">Requests</a>
+									<a href="application-request.php" class="slide-item">Application Requests</a>
 								</li>
                                 <li>
 									<a href="approvals.php" class="slide-item">Approvals</a>
@@ -177,7 +174,7 @@
 									<li class="nav-item dropdown">
 										<a aria-expanded="false" aria-haspopup="true" class="nav-link pr-md-0" data-toggle="dropdown" href="#" role="button">
 										<div class="media align-items-center">
-                                            <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="assets/img/babandede.png"></span>
+                                            <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src=""></span>
 											<div class="">
 												<span class="mb-0 "><?php echo $profile->getName($_SESSION['profile']); ?></span>
 											</div>

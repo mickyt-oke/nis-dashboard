@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData">
+    <serverData>
+      <paths name="https://github.com/mickyt-oke/Dashboard.git">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="https://github.com/mickyt-oke/Dashboard.git" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

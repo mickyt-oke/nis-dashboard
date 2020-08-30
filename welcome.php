@@ -57,7 +57,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 			<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 			<aside class="app-sidebar">
 				<div class="sidebar-img">
-					<a class="navbar-brand" href="dashboard.php"><img alt="..." class="navbar-brand-img main-logo" src="assets/img/brand/diplomat.png"> <img alt="..." class="navbar-brand-img logo" src="assets/img/brand/logo3.jpg"></a></div>
+					<a class="navbar-brand" href="#"><img alt="..." class="navbar-brand-img main-logo" src="assets/img/brand/diplomat.png"> <img alt="..." class="navbar-brand-img logo" src="assets/img/brand/logo3.jpg"></a></div>
 			</aside>
 			<div class="app-content">
 				<div class="side-app">
@@ -88,7 +88,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 									<li class="nav-item dropdown">
 										<a aria-expanded="false" aria-haspopup="true" class="nav-link pr-md-0" data-toggle="dropdown" href="#" role="button">
 										<div class="media align-items-center">
-                                            <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="assets/img/babandede.png"></span>
+                                            <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src=""></span>
 											<div class="">
 												<span class="mb-0 "><?php echo $profile->getName($_SESSION['profile']); ?></span>
 											</div>
@@ -121,38 +121,38 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 			</div>
 			<?php error($errors);
                       success($message); ?>
-					<div class="col-md-12 justify-content-center">
-						<div class="row">
-								<div class="col-md-6 col-lg-6 col-xl-3">
-									<div class="card shadow">
-										<div class="card-body text-center">
-											<i class="fas fa-envelope-open-text fa-3x text-default"></i>
-											<h4 class="mt-3">Returns &amp; Reports</h4>
-											
-											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#form" >Enter</button>
-										</div>
-									</div>
-								</div>
+            <div class=" row">
+                <div class="col-md-12">
+                    <div class="card-profile overflow-hidden">
+                        <div class="row justify-content-center">
+                                    <div class="col-md-6 col-lg-6 col-xl-3">
+                                        <div class="card shadow">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-envelope-open-text fa-3x text-default"></i>
+                                        <h4 class="mt-3">Returns &amp; Reports</h4>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#form"> Enter</button>
+                                    </div>
+                                        </div>
+                                    </div>
+
 								<div class="col-md-6 col-lg-6 col-xl-3">
 									<div class="card shadow">
 										<div class="card-body text-center">
 											<i class="fas fa-book fa-3x text-warning"></i>
-											<h4 class="mt-3" >I&amp;R Application</h4>
+											<h4 class="mt-3" >I &amp; R Application</h4>
 											
-											<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#form2" >Enter</button>
+											<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#form2"> Enter</button>
 										</div>
 									</div>
 								</div>
-							</div>		
-					
-						<div class="row">
+
 								<div class="col-md-6 col-lg-6 col-xl-3">
 									<div class="card shadow">
 										<div class="card-body text-center">
 											<i class="fas fa-box-open fa-3x text-success"></i>
 											<h4 class="mt-3">Stock Management</h4>
-											
-											<a href="dashboard.php?stock" class="btn btn-success ">Enter</a>
+
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#form3"> Enter</button>
 										</div>
 									</div>
 								</div>
@@ -161,13 +161,13 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 										<div class="card-body text-center">
 											<i class="fas fa-database fa-3x text-danger"></i>
 											<h4 class="mt-3" >Archive</h4>
-											
-											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form" >Enter</button>
+											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form4" >Enter</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+                     </div></div></div>
 	<?php include_once 'inc/dash-foot.php'; ?>
 			
 	<!-- modal form -->
@@ -175,7 +175,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 		<div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
 			<div class="modal-content">
 				<div class="modal-body p-0">
-					<div class="card bg-danger shadow border-0 mb-0">
+					<div class="card bg-default shadow border-0 mb-0">
 				<div class="card-body px-lg-5 py-lg-5">
 						<div class="text-center text-white mb-4 h2">User Token </div>
 							<form role="form" action="token.php?q=welcome.php" method="post">
@@ -184,7 +184,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 						</div>
-							<input class="form-control" name="password" placeholder="passcode" type="password">
+							<input class="form-control" name="pass" placeholder="passcode" type="password">
 						</div>
 					</div>
 						<div class="text-center"><input type="submit" class="btn btn-white my-4" name="login" value="Login" /></div>
@@ -204,13 +204,13 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 					<div class="card bg-warning shadow border-0 mb-0">
 				<div class="card-body px-lg-5 py-lg-5">
 						<div class="text-center text-white mb-4 h2">User Token </div>
-							<form role="form" action="token.php?z=welcome.php" method="post">
+							<form role="form" action="token.php?q=welcome.php" method="post">
 					<div class="form-group">
 					<div class="input-group input-group-alternative">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 						</div>
-							<input class="form-control" name="pass" placeholder="passcode" type="password">
+							<input class="form-control" name="pwd" placeholder="passcode" type="password">
 						</div>
 					</div>
 						<div class="text-center"><input type="submit" class="btn btn-white my-4" name="log-in" value="Login" /></div>
@@ -221,3 +221,55 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 				</div>
 			</div>
 		</div>
+
+                    <!-- form3 -->
+                    <div class="modal fade" id="form3" tabindex="-1" role="dialog" aria-labelledby="form3" aria-hidden="true">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card bg-success shadow border-0 mb-0">
+                                        <div class="card-body px-lg-5 py-lg-5">
+                                            <div class="text-center text-white mb-4 h2">User Token </div>
+                                            <form role="form" action="token.php?q=welcome.php" method="post">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                        </div>
+                                                        <input class="form-control" name="pasw" placeholder="passcode" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="text-center"><input type="submit" class="btn btn-white my-4" name="log-in" value="Login" /></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- form4 -->
+                    <div class="modal fade" id="form4" tabindex="-1" role="dialog" aria-labelledby="form4" aria-hidden="true">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card bg-warning shadow border-0 mb-0">
+                                        <div class="card-body px-lg-5 py-lg-5">
+                                            <div class="text-center text-white mb-4 h2">User Token </div>
+                                            <form role="form" action="token.php?q=welcome.php" method="post">
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                                        </div>
+                                                        <input class="form-control" name="pswd" placeholder="passcode" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="text-center"><input type="submit" class="btn btn-white my-4" name="log-in" value="Login" /></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

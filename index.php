@@ -1,4 +1,4 @@
-<?php 
+<?php
 error_reporting(0);
 session_start();
 ob_start();
@@ -56,7 +56,7 @@ include_once 'config_2.php';
 ?>
 <script>
 	function validateForm() {
-		var y = document.forms["form"]["username"].value;	
+		var y = document.forms["form"]["username"].value;
 		var letters = /^[A-Za-z]+$/;if (y == null || y == "") {alert("Name must be filled out.");return false;}
 		var x = document.forms["form"]["email"].value;
 		var atpos = x.indexOf("@");
@@ -70,9 +70,9 @@ include_once 'config_2.php';
     <body id="page">
         <ul class="cb-slideshow">
             <li><span>Image 01</span><div><h3>nigeria immigration service </h3></div></li>
-            <li><span>Image 02</span><div><h3></h3></div></li>
+            <li><span>Image 02</span><div><h3>unity in diversity</h3></div></li>
             <li><span>Image 03</span><div><h3>automating missions</h3></div></li>
-            <li><span>Image 04</span><div><h3></h3></div></li>
+            <li><span>Image 04</span><div><h3>operational efficiency</h3></div></li>
             <li><span>Image 05</span><div><h3>ease of doing business</h3></div></li>
             <li><span>Image 06</span><div><h3></h3></div></li>
         </ul>
@@ -81,8 +81,7 @@ include_once 'config_2.php';
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
                     <strong>DIPLOMATIC DESK DIRECTORY LISTING</strong></a>
-				<strong><?php error($errors);
-                      success($message); ?></strong>
+				<a href=""><?php error($errors); ?></a>
                 <span class="right">
                     <a class="launch-modal" href="#" data-modal-id="modal-login">
                         <strong>&laquo;staff login</strong>
@@ -93,7 +92,7 @@ include_once 'config_2.php';
             
             <header>
                 <h1>NIS<span> DIPLOMATIC MISSIONS </span>PORTAL</h1>
-                <h2>Integrating &amp; harmonizing Foreign Missions</h2>
+                <h2>Automation & Integration of Foreign Missions</h2>
             </header>
         </div>
         
@@ -106,7 +105,7 @@ include_once 'config_2.php';
         				<button type="button" class="close" data-dismiss="modal">
         					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         				</button>
-        				<h3 align="center" id="modal-login-label">Sign in with Credentials</h3>
+                        <div align="center" id="modal-login-label"><h3>Sign in with Credentials</h3></div>
         			</div>
         			<p></p>
         			<div class="modal-body">

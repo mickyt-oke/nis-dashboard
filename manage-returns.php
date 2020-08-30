@@ -1,6 +1,9 @@
-<?php require_once 'core/init.php'; ?>
-
-<?php include_once 'inc/header.php'; 
+<?php require_once 'core/init.php';
+    admin();
+    if (!isAdmin()){
+    redirectTo ('dash.php');
+    }
+    include_once 'inc/header-2.php';
 ?>
 <!-- Page content -->
 						<div class="container-fluid pt-8">

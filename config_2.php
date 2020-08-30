@@ -29,10 +29,8 @@ require_once "functions/functions.php";
 // Objects/instances of classes
 $profile = new Profile();
 $user = new User();
-$errors = array();
 $session = new Session();
 $message = $session->message();
-
 
 // Obtain the filename of current page
 $page = basename($_SERVER['PHP_SELF']);

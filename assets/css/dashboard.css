@@ -3397,6 +3397,11 @@ input[type='submit'].btn-block, input[type='reset'].btn-block, input[type='butto
 	padding: 1.875rem;
 	flex: 1 1 auto;
 }
+.card-body-re {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	flex: 1 1 auto;
+}
 .card-title {
 	margin-bottom: 1.25rem;
 }

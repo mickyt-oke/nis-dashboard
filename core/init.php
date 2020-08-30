@@ -1,5 +1,6 @@
 <?php
-    
+session_start();
+
 // Create and initialize variables
 $errors = array();
 // Define paths
@@ -11,16 +12,6 @@ define("APP_ROOT", dirname(dirname(__FILE__)).DS);
 require_once APP_ROOT . "db/dbConnection.php";
 require_once APP_ROOT . "core/common.php";
 require_once APP_ROOT . "functions/functions.php";
-
-session_start();
-	restricted();   
-if(isset($_SESSION["profile"])) {
-	if(isLoginSessionExpired()) {
-		$errors[] = "Session Timeout. Please reauthenticate to continue"; 
-		header("Location:logout.php?session_expired=1");
-	}		
-}
-
 
 //Class instances
 $profile = new Profile();
@@ -36,11 +27,21 @@ $year = new Year();
 $continent = new Continent();
 $con = new Connection();
 $entry = new Entry();
-$photo = new Photograph();
-
-
+$upload = new Upload();
 $session = new Session();
 $message = $session->message();
+$archive = new Archive();
+
+restricted();
+if(isset($_SESSION["profile"])) {
+    if(isLoginSessionExpired()) {
+        $errors[] = "Session Timeout. Please reauthenticate to continue";
+        header("Location:logout.php?session_expired=1");
+    }
+}
+if (!isset($_SESSION['profile'])) {
+    $errors[] = "Session Timeout. Please reauthenticate to continue";
+}
 
 // Obtain the filename of current page
 $page = basename($_SERVER['PHP_SELF']);

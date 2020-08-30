@@ -43,11 +43,8 @@
 	<script src="assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
     <!-- Date Picker-->
 	<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-
 	<!-- Echarts JS -->
 	<script src="assets/plugins/chart-echarts/echarts.js"></script>
-   
 
 	<!-- peitychart -->
 	<script src="assets/plugins/peitychart/jquery.peity.min.js"></script>

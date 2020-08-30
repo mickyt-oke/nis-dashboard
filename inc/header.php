@@ -11,7 +11,7 @@
 	<title>NIS DIPLOMATIC MISSIONS E-DESK DASHBOARD</title>
 
 	<!-- Favicon -->
-	<link href="assets/img/brand/favicon.ico" rel="icon" type="image/icon">
+	<link href="assets/img/brand/favicon.ico" rel="icon" type="image/icon" />
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">
@@ -58,10 +58,10 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Returns</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="add-new.php" class="slide-item">Add Returns</a>
+									<a href="entry.php?v=new" class="slide-item">Add Returns</a>
 								</li>
                                 <li>
-									<a href="manage-returns.php" class="slide-item">Manage Returns</a>
+									<a href="entry.php?v=manage" class="slide-item">Manage Returns</a>
 								</li>
                                
 							</ul>
@@ -70,10 +70,10 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-edit"></i><span class="side-menu__label">Reports</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="#" class="slide-item">Compose Reports</a>
+									<a href="compose.php?p=new" class="slide-item">Compose Reports</a>
 								</li>
 								<li>
-									<a href="#" class="slide-item">Manage Reports</a>
+									<a href="compose.php?p=manage" class="slide-item">Manage Reports</a>
 								</li>
 							</ul>
 						</li>
@@ -82,19 +82,17 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-globe"></i><span class="side-menu__label">I &amp; R</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="change-of-data.php" class="slide-item">COD Application</a>
-								</li>
-								<li>
-									<a href="application-request.php" class="slide-item">Manage Application</a>
+									<a href="change-of-data.php" class="slide-item">Applications</a>
 								</li>
                                 <li>
-									<a href="#" class="slide-item">Track Status</a>
+									<a href="approvals.php" class="slide-item">Approvals</a>
 								</li>
                                 <li>
 									<a href="requirements.php" class="slide-item">Requirements</a>
 								</li>
 							</ul>
 						</li>
+                        <!--
                         <li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">Requests</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
@@ -105,12 +103,12 @@
 									<a href="#" class="slide-item">Manage Request</a>
 								</li>
 							</ul>
-						</li>
+						</li>-->
                         <li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Archive</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="archiving.php" class="slide-item">Upload Files</a>
+									<a href="archiving.php" class="slide-item">Archiving Operations</a>
 								</li>
 								<!--
 								<li>
@@ -213,7 +211,7 @@
 												<h6 class="text-overflow m-0">Logged in!</h6>
 											</div>
                                             <?php if ($_SESSION['profile'] == 118): ?>
-											<a class="dropdown-item" href="dashboard"><i class="ni ni-single-02"></i> <span>Settings</span></a>
+											<a class="dropdown-item" href="#"><i class="ni ni-single-02"></i> <span>Settings</span></a>
 											<?php endif; ?>
 											<a class="dropdown-item" href="logout.php"><i class="ni ni-user-run"></i> <span>Logout</span></a>
                                             <?php else: ?>
