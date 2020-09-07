@@ -1,11 +1,11 @@
 <?php
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 session_start();
 ob_start();
 
 include_once 'config_2.php';
 
-    
   if (count($_POST)>0){
 
 	// Process form request
@@ -50,9 +50,12 @@ include_once 'config_2.php';
 	<link href="assets/img/brand/favicon.ico" rel="icon" type="image/icon">
     <link rel="stylesheet" type="text/css" href="assets/css/demo-2.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/style4.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
 
-<?php if(@$_GET['q'])
-{echo'<script>alert("'.@$_GET['q'].'");</script>';}
+
+<?php if(@$_GET['q']) {
+    echo'<script>alert("'.@$_GET['q'].'");</script>';
+}
 ?>
 <script>
 	function validateForm() {
@@ -65,9 +68,13 @@ include_once 'config_2.php';
 
 		var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords must match.");return false;}}
 </script>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+
 </head>
 
-    <body id="page">
+    <body id="page" oncontextmenu="return false;">
         <ul class="cb-slideshow">
             <li><span>Image 01</span><div><h3>nigeria immigration service </h3></div></li>
             <li><span>Image 02</span><div><h3>unity in diversity</h3></div></li>
@@ -81,7 +88,7 @@ include_once 'config_2.php';
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
                     <strong>DIPLOMATIC DESK DIRECTORY LISTING</strong></a>
-				<a href=""><?php error($errors); ?></a>
+
                 <span class="right">
                     <a class="launch-modal" href="#" data-modal-id="modal-login">
                         <strong>&laquo;staff login</strong>
@@ -91,6 +98,7 @@ include_once 'config_2.php';
             </div><!--/ Codrops top bar -->
             
             <header>
+                <?php error($errors); success($message); ?>
                 <h1>NIS<span> DIPLOMATIC MISSIONS </span>PORTAL</h1>
                 <h2>Automation & Integration of Foreign Missions</h2>
             </header>
@@ -130,45 +138,39 @@ include_once 'config_2.php';
         </div>
 
         <div class="modal fade" id="modal-search" tabindex="1" role="document" aria-labelledby="modal-search-label" aria-hidden="true">
-        	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        	<div class="modal-dialog modal-dialog-centered modal-lg">
         		<div class="modal-content">
-        			
         			<div class="modal-header">
         				<button type="button" class="close" data-dismiss="modal">
         					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         				</button>
-        				<h3 id="modal-search-label">Search</h3>
-        			</div>
+                        <h3 id="modal-search-label">Search By Mission or Country</h3>
+                    </div>
                     <div class="modal-body" align="center">
-                    <form action="index.php?go" method="post" id="searchform">
-        			
-                        <div class="form-group">
-						  <input type="text" class="form-control" name="search" placeholder="search with country, city or mission" autofocus required/>
-                        </div>
-                        <div class="form-group">
-                        <button type="submit" class="btn btn-primary"> Search</button>
-                        <input type="hidden" name="search" value="search" />
-                        </div>
-        			</form>
-                </div>
-        		</div>
-        	</div>
-        </div> 
-        
-        
+                        <form action="search.php?go" method="post" id="searchform">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="search" placeholder="" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="submit" class="btn btn-primary"> Search</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+        </div>
+
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
-    <!-- Javascript -->
+        <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+        <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
 
+        <script src="assets/js/placeholder.js"></script>
     </body>
-
 </html>

@@ -38,9 +38,18 @@
 
 	<!-- Sidemenu Css -->
 	<link href="assets/plugins/toggle-sidebar/css/sidemenu.css" rel="stylesheet">
-
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+    <script type="text/javascript"> //<![CDATA[
+        var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");
+        document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+        //]]></script>
+    <script language="JavaScript" type="text/javascript">
+        TrustLogo("https://www.positivessl.com/images/seals/positivessl_trust_seal_md_167x42.png", "POSDV", "none");
+    </script>
 </head>
-<body class="app sidebar-mini rtl" >
+<body class="app sidebar-mini rtl" oncontextmenu="return false;">
 	<div id="global-loader" ></div>
 	<div class="page">
 		<div class="page-main">
@@ -58,10 +67,10 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Returns</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="entry.php?v=new" class="slide-item">Add Returns</a>
+									<a href="entry.php" class="slide-item">Add Returns</a>
 								</li>
                                 <li>
-									<a href="entry.php?v=manage" class="slide-item">Manage Returns</a>
+									<a href="return-manager.php" class="slide-item">Manage Returns</a>
 								</li>
                                
 							</ul>
@@ -92,18 +101,18 @@
 								</li>
 							</ul>
 						</li>
-                        <!--
+
                         <li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">Requests</span><i class="angle fa fa-angle-right"></i></a>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">Staff Management</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="#" class="slide-item">Fill Request</a>
+									<a href="manage.php" class="slide-item">Manage Records</a>
 								</li>
-								<li>
+								<!--<li>
 									<a href="#" class="slide-item">Manage Request</a>
 								</li>
 							</ul>
-						</li>-->
+						</li>
                         <li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Archive</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
@@ -116,7 +125,7 @@
 								</li>
                                 <li>
 									<a href="#" class="slide-item">Search</a>
-								</li> -->
+								</li>
 							</ul>
 						</li>
 						<li class="slide">
@@ -144,7 +153,7 @@
 								</li>
                                 <li>
 									<a href="#" class="slide-item">Direct Messaging</a>
-								</li>
+								</li>-->
 							</ul>
 						</li>
 					</ul>

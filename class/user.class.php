@@ -1,7 +1,7 @@
 <?php
 class User {
 	private $database;
-	public $id, $username, $password, $usergroup, $is_active, $created, $profileid;
+	public $id, $username, $password, $usergroup, $created, $profileid;
 
 	public function __construct() {
 		$this->database = new Connection();
@@ -60,6 +60,9 @@ class User {
 			$_SESSION['us3rid'] = $result['id'];
 			$_SESSION['us3rgr0up'] = $result['usergroup'];
 			$_SESSION['profile'] = $result['profileid'];
+			$_SESSION['mission'] = $result['missionid'];
+			$_SESSION['country'] = $result['countryid'];
+			$_SESSION['continent'] = $result['continentid'];
             $_SESSION['loggedin_time'] = $result['loggedin_time'];
 			$_SESSION['1s@dmin'] = ($result['usergroup'] == 118) ? true : false;
 		}

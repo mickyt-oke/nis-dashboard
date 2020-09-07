@@ -32,6 +32,9 @@ $user = new User();
 $session = new Session();
 $message = $session->message();
 
+//Init
+$errors = array();
+
 // Obtain the filename of current page
 $page = basename($_SERVER['PHP_SELF']);
 

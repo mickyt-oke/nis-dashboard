@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 session_start();
 
 // Create and initialize variables
@@ -31,16 +33,18 @@ $upload = new Upload();
 $session = new Session();
 $message = $session->message();
 $archive = new Archive();
+$visa = new Visa();
+$visacat = new VisaCat();
 
 restricted();
 if(isset($_SESSION["profile"])) {
     if(isLoginSessionExpired()) {
-        $errors[] = "Session Timeout. Please reauthenticate to continue";
+        $error[] = "Session Timeout. Please reauthenticate to continue";
         header("Location:logout.php?session_expired=1");
     }
 }
 if (!isset($_SESSION['profile'])) {
-    $errors[] = "Session Timeout. Please reauthenticate to continue";
+    $error[] = "Session Timeout. Please reauthenticate to continue";
 }
 
 // Obtain the filename of current page
