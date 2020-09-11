@@ -1,7 +1,7 @@
 <?php
 class Connection {
 	private $dbhost = 'localhost';
-	private $dbname = 'nisdb';
+	private $dbname = 'nis_db';
 	private $user = 'root';
 	private $pswd = '';
 

@@ -45,7 +45,8 @@
 	<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 	<!-- Echarts JS -->
 	<script src="assets/plugins/chart-echarts/echarts.js"></script>
-
+    <!-- Form Validation -->
+    <script src="assets/js/validate.js"></script>
 	<!-- peitychart -->
 	<script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
 	<script src="assets/plugins/peitychart/peitychart.init.js"></script>

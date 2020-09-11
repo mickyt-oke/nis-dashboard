@@ -1,5 +1,5 @@
 <?php
-    $con= new mysqli('localhost','root','','nisdb')or die("Could not connect to mysql".mysqli_error($con));
+    $con= new mysqli('localhost','root','','nis_db')or die("Could not connect to mysql".mysqli_error($con));
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +24,6 @@
                     <link rel="stylesheet" type="text/css" href="assets/css/vendors.css" />
                     <!-- app style -->
                     <link rel="stylesheet" type="text/css" href="assets/css/style2.css" />
-               <script type="text/javascript"> //<![CDATA[
-                   var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");
-                   document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
-                   //]]></script>
-               <script language="JavaScript" type="text/javascript">
-                   TrustLogo("https://www.positivessl.com/images/seals/positivessl_trust_seal_md_167x42.png", "POSDV", "none");
-               </script>
            </head>
 
      <body oncontextmenu="return false;">

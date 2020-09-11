@@ -12,8 +12,7 @@
         <div class="row">
           	<div class="col-md-12">
 				<h2>MONTHLY RETURNS ENTRY</h2>
-                <div><?php error($errors);
-                    success($message); ?></div>
+
 				<div class="card shadow">
 					<div class="card-body">
 							<div class="email-app card shadow">
@@ -79,7 +78,7 @@
                             
                         if (empty($errors)) {
                             if ($entry->createEntry()) {
-                                $session->message("Submission Successful.<a href=\"entry.php?q=2\"> Continue</a>");
+                                $session->message("Submission Successful");
                                 //redirectTo('entry.php?q=2');
                             }
                         }
@@ -89,8 +88,10 @@
                 }
                 ?>
                  <div class="inbox card-body">
-					    <form action="entry.php?q=1" method="post">
+					    <form action="entry.php?q=1" onsubmit="return validateform()" method="post">
                             <div class="form-row mb-2">
+                                <div class="col-md-12"><?php error($errors);
+                                    success($message); ?></div>
                                 <h2 class="col-md-4">PASSPORT RETURNS</h2>
                                 <hr />
 								<div class="btn-group" style="float: right;">
@@ -222,18 +223,47 @@
 
                                 <?php if(@$_GET['q']== 2) {
                                 if (isset($_POST['subreturns'])) {
-                                    $required = array('bus' , 'tou' , 'off' , 'twp' , 'str' , 'rev' , 'stkbal');
+                                    $required = array('');
 
-                                    foreach($_POST as $key=>$value) {
+                                    foreach ($_POST as $key => $value) {
                                         if (empty($value) && in_array($key, $required)) {
                                             $errors[] = "Complete all fields, please.";
                                             break;
                                         }
                                     }
-                                }
+                                    //if No errors
+                                    if (empty($errors)) {
+                                        $visacat->month = sanitize('month');
+                                        $visacat->year = sanitize('year');
+                                        $visacat->opn_bal = sanitize('opnbal');
+                                        $visacat->diplomatic = sanitize('dip');
+                                        $visacat->business = sanitize('bus');
+                                        $visacat->tourist = sanitize('tou');
+                                        $visacat->twp = sanitize('twp');
+                                        $visacat->str = sanitize('str');
+                                        $visacat->transit = sanitize('tra');
+                                        $visacat->official = sanitize('off');
+                                        $visacat->damage = sanitize('dam');
+                                        $visacat->stockbal = sanitize('stkbal');
+                                        $visacat->visa_rev = sanitize('rev');
+                                        $visacat->comments = trim($_POST['message']);
+
+                                    }
+
+                                    if (empty($errors)) {
+                                        if ($visacat->createVisa()) {
+                                            $session->message("Submission Successful.</a>");
+                                        }
+                                    } else
+                                        {
+                                        $errors[] = "Record incorrect. Please Check again.";
+                                    }
+                                        }
                                 ?>
                                 <div class="inbox card-body">
-                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                                    <form action="entry.php?q=2" onsubmit="return validateform()" method="post">
+                                        <div class="col-md-12"><?php error($errors);
+                                            success($message); ?></div>
                                         <div class="form-row mb-2">
                                             <h2 class="col-md-4">VISA RETURNS</h2>
                                             <hr />
@@ -276,7 +306,7 @@
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Opening stock </div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="stkbal" placeholder="" value="<?php echo stickyForm('stkbal'); ?>">
+                                                <input type="number" class="form-control" name="opnbal" placeholder="" value="<?php echo stickyForm('stkbal'); ?>">
                                             </div>
                                         </div>
                                         <hr />
@@ -284,19 +314,19 @@
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Diplomatic</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="dip" placeholder="" value="<?php echo stickyForm('dip'); ?>">
+                                                <input type="number" class="form-control" name="dip" placeholder="" value="<?php echo stickyForm('dip'); ?>" >
                                             </div>
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Business</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="bus" placeholder="" value="<?php echo stickyForm('year'); ?>">
+                                                <input type="number" class="form-control" name="bus" placeholder="" value="<?php echo stickyForm('bus'); ?>" >
                                             </div>
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Tourist</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="tou" placeholder="" value="<?php echo stickyForm('tou'); ?>">
+                                                <input type="number" class="form-control" name="tou" placeholder="" value="<?php echo stickyForm('tou'); ?>" >
                                             </div>
                                         </div>
                                         <div class="input-group mb-2">
@@ -308,19 +338,19 @@
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">STR</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="str" placeholder="" value="<?php echo stickyForm('str'); ?>">
+                                                <input type="number" class="form-control" name="str" placeholder="" value="<?php echo stickyForm('str'); ?>" >
                                             </div>
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Transit</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="tra" placeholder="" value="<?php echo stickyForm('tra'); ?>">
+                                                <input type="number" class="form-control" name="tra" placeholder="" value="<?php echo stickyForm('tra'); ?>" >
                                             </div>
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Official</div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="off" placeholder="" value="<?php echo stickyForm('off'); ?>">
+                                                <input type="number" class="form-control" name="off" placeholder="" value="<?php echo stickyForm('off'); ?>" >
                                             </div>
                                         </div>
                                         <hr />
@@ -333,7 +363,7 @@
                                         <div class="input-group mb-4">
                                             <div class="col-md-4">Balance in stock</div>
                                             <div class="col-md-4">
-                                                <input type="number" name="bal" class="form-control" placeholder="" value="<?php echo stickyForm('bal'); ?>">
+                                                <input type="number" name="stkbal" class="form-control" placeholder="" value="<?php echo stickyForm('bal'); ?>">
                                             </div>
                                         </div>
                                         <div class="input-group mb-4">
@@ -355,7 +385,9 @@
                                     </form>
                                 </div>
                             </div>
-                        <?php } ?>
+                        <?php
+                        }
+                        ?>
 
 							</div>
                         </div>

@@ -1,7 +1,8 @@
 <?php
 class VisaCat {
 	private $database;
-	public $month, $year, $missionid, $userid, $countryid, $continentid, $visa_class, $issued;
+	public $month, $year, $missionid, $userid, $countryid, $continentid, $diplomatic, $tourist, $business, $transit, $official, $twp
+	, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments;
 
 	public function __construct() {
 		$this->database = new Connection();
@@ -10,17 +11,27 @@ class VisaCat {
 	
 	// Create record in database table
 	public function createVisa() {
-		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (month, year, issued, visa_class, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
+		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (month, year, diplomatic, business, transit, tourist, official, twp, str, damage, opn_bal, stockbal, visa_rev, comments, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		// Bind all values to the placeholders
 		$statement->bindParam(1, $this->month);
 		$statement->bindParam(2, $this->year);
-		$statement->bindParam(3, $this->issued);
-		$statement->bindParam(4, $this->visa_class);
+		$statement->bindParam(3, $this->diplomatic);
+		$statement->bindParam(4, $this->business);
+		$statement->bindParam(5, $this->transit);
+		$statement->bindParam(6, $this->tourist);
+		$statement->bindParam(7, $this->official);
+		$statement->bindParam(8, $this->twp);
+		$statement->bindParam(9, $this->str);
+		$statement->bindParam(10, $this->damage);
+		$statement->bindParam(11, $this->opn_bal);
+		$statement->bindParam(12, $this->stockbal);
+		$statement->bindParam(13, $this->visa_rev);
+		$statement->bindParam(14, $this->comments);
 
-        $statement->bindParam(5, $_SESSION['mission']);
-		$statement->bindParam(6, $_SESSION['profile']);
-		$statement->bindParam(7, $_SESSION['country']);
-		$statement->bindParam(8, $_SESSION['continent']);
+        $statement->bindParam(14, $_SESSION['mission']);
+		$statement->bindParam(15, $_SESSION['profile']);
+		$statement->bindParam(16, $_SESSION['country']);
+		$statement->bindParam(17, $_SESSION['continent']);
 
 		// Execute the query
 		$result = $statement->execute();
