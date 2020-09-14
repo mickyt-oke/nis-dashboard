@@ -1,5 +1,7 @@
 <?php require_once 'core/init.php'; ?>
-<?php require_once 'core/init2.php'; ?>
+<?php require_once 'core/init2.php';
+get_current_user();
+?>
 
 <?php include_once 'inc/header.php'; ?>
         <!-- Page content -->
@@ -11,17 +13,17 @@
 								</ol>
 							</div>
 							
-    <?php 
+    <?php
         if (isset($_REQUEST['view'])) {
 		//query the database
 		$sql = mysqli_query($con, "SELECT * FROM local_staff WHERE first_name='" . htmlspecialchars($_REQUEST['view'], ENT_QUOTES) . "' ");
-            
+
 		if(mysqli_num_rows($sql) == 0) {
 				echo "<h3 style=\"color:#0000cc;text-align:center;\">No Information to display..!</h3>";
 		}
 			else if ($x = mysqli_fetch_array($sql)) {
 	?>
-                            
+
                 <!-- modal dialog-->
 								<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 									<div class="modal-content">
@@ -102,22 +104,22 @@
 										</div>
 									</div>
 								</div>
-                    <?php } 
-                    }   
-                ?>	
-                
-                <!-- STAFF -->            
-    <?php 
+                    <?php }
+                    }
+                ?>
+
+                <!-- STAFF -->
+    <?php
         if (isset($_REQUEST['preview'])) {
 		//query the database
 		$sql = mysqli_query($con, "SELECT * FROM profile WHERE firstname='" . htmlspecialchars($_REQUEST['preview'], ENT_QUOTES) . "' ");
-            
+
 		if(mysqli_num_rows($sql) == 0) {
 				echo "<h3 style=\"color:#0000cc;text-align:center;\">No Information to display..!</h3>";
 		}
 			else if ($p = mysqli_fetch_array($sql)) {
 	?>
-                            
+
                 <!-- modal dialog-->
 								<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 									<div class="modal-content">
@@ -183,7 +185,7 @@
 																<tr>
 																	<td><strong>Date Posted: </strong> <?php echo $p['posted']; ?></td>
 																</tr>
-                                                                
+
                                                                 <tr>
 																	<td><strong>Country: </strong> <?php echo $p['country']; ?></td>
 																</tr>
@@ -208,128 +210,69 @@
 										</div>
 									</div>
 								</div>
-                    <?php } 
-                    }   
-                ?>	
-                            
-                            
-                            <!-- END -->
-                            <div class="row">
-								<div class="col-md-12">
-									<div class="card shadow">
-										<div class="card-header">
-											<h2 class="mb-0">Staff Nominal Roll</h2>
-										</div>
-                                <div class="card-body">
-											<div class="table-responsive">
-												<table id="example" class="table table-striped table-bordered w-100 text-nowrap">
-													<thead>
-                                                        <tr>
-															<th class="wd-5p">S/N</th>
-                                                            <th class="wd-15p">First name</th>
-															<th class="wd-15p">Last name</th>
-															<th class="wd-10p">Service No</th>
-															<th class="wd-15p">Rank</th>
-															<th class="wd-15p">Phone</th>
-															<th class="wd-20p">E-mail</th>
-                                                            <th class="wd-5p">Manage</th>
-														</tr>
-													</thead>
-                                                    <tbody>
-                                <?php $users = $user->userProfile(); if (isset($users)): ?> 
-                  <?php $x=1; foreach($users as $user): ?>
-                                                        <tr>
-															<td><?php echo $x; ?></td>
-															<td><?php echo $user['firstname']; ?></td>
-															<td><?php echo $user['lastname']; ?></td>
-															<td><?php echo $user['nisno']; ?></td>
-															<td><?php echo $user['rank']; ?></td>
-															<td><?php echo $user['phone1']; ?></td>
-                                                            <td><?php echo $user['email']; ?></td>
-															<td>
-                                                                <?php echo "<a title=\"preview " . htmlspecialchars_decode($user['firstname'], ENT_QUOTES) . "\"href=\"manage.php?preview=" . htmlspecialchars_decode($user['firstname'], ENT_QUOTES) . "\"><i class=\"side-menu__icon fe fe-eye\" /></i></a>"; ?>
-                                                                <a href="#"><i class="side-menu__icon fe fe-edit"></i></a>
-                      <a href="#" onclick="return confirm('Are you sure you want to delete this user?')"><i class="side-menu__icon fe fe-delete"></i></a>
-                                                            </td>
-                                                           </tr>
-                                                        <?php $x++; endforeach; ?>
-                                                     </tbody>
-                                                   <?php endif; ?>
-												</table>
-                                            </div>
-										</div>
-								</div>
-							</div>
-                            </div>
-                        
-                            <div class="row">
-								<div class="col-md-12">
-									<div class="card shadow">
-										<div class="card-header">
-											<h2 class="mb-0">Local Staff Nominal Roll</h2>
-										</div>
-										<div class="card-body">
-											<div class="table-responsive">
-												<table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
-													<thead>
-                                                        <tr>
-															<th class="wd-5p">S/N</th>
-                                                            <th class="wd-15p">First name</th>
-															<th class="wd-15p">Last name</th>
-															<th class="wd-10p">Designation</th>
-															<th class="wd-15p">Date Employed</th>
-															<th class="wd-15p">Email</th>
-															<th class="wd-10p">Phone</th>
-                                                            <th class="wd-5p">Manage</th>
-														</tr>
-													</thead>
-                                                    <tbody>
-                                <?php $local = $local_staff->local_staffProfile(); if (isset($local)): ?> 
-                  <?php $x=1; foreach($local as $local_staff): ?>
-                                                        <tr>
-															<td><?php echo $x; ?></td>
-															<td><?php echo $local_staff['first_name']; ?></td>
-															<td><?php echo $local_staff['last_name']; ?></td>
-															<td><?php echo $local_staff['designation']; ?></td>
-															<td><?php echo $local_staff['appt_date']; ?></td>
-															<td><?php echo $local_staff['mail']; ?></td>
-                                                            <td><?php echo $local_staff['mobile']; ?></td>
-															<td>
-                                                               <?php echo "<a title=\"view " . htmlspecialchars_decode($local_staff['first_name'], ENT_QUOTES) . "\"href=\"manage.php?view=" . htmlspecialchars_decode($local_staff['first_name'], ENT_QUOTES) . "\"><i class=\"side-menu__icon fe fe-eye\" /></i></a>"; ?>
-                                                                <?php echo "<a title=\"edit " . htmlspecialchars_decode($local_staff['first_name'], ENT_QUOTES) . "\"href=\"manage.php?edit=" . htmlspecialchars_decode($local_staff['first_name'], ENT_QUOTES) . "\"><i class=\"side-menu__icon fe fe-edit\"/></i></a>"; ?>
-                                                                <a href="#" onclick="return confirm('Are you sure you want to delete this user?')"><i class="side-menu__icon fe fe-delete"></i></a>
-                                                            </td>
-														</tr>
-                                                        <?php $x++; endforeach; ?>
-													</tbody>
-                                                    <?php endif; ?>
-												</table>
-                                            </div>
-										</div>
-                                </div>
-							</div>      
-                        </div>
-               
-                <!-- end modal -->  
+                    <?php }
+                    }
+                ?>
 
-           
+                    <!-- Default values for page -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2 class="mb-0">Staff Record</h2>
+                </div>
+                <div class="card-body">
+                    <?php if (isset($_SESSION['profile'])) {
+                    $profile = $_SESSION['profile'];
+                    //query the database
+                    $sql = mysqli_query($con,"SELECT * FROM profile WHERE firstname !='".$_SESSION['us3rid']."';");
+                                echo  '<div class="table-responsive">
+<table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
+<tr><th class="wd-15p">Full name</th><th class="wd-10p">Service No</th><th class="wd-15p">Rank</th><th class="wd-15p">Phone</th><th class="wd-20p">E-mail</th><th class="wd-5p">Manage</th></tr>';
+                    $c=0;
+                    if ($r=mysqli_fetch_array($sql)) {
+                        $firstname = $r['firstname'];
+                        $nisno = $r['nisno'];
+                        $rank = $r['rank'];
+                        $phone1 = $r['phone1'];
+                        $email = $r['email'];
+                        echo
+                            '<tbody><tr>
+                           <td>' . $firstname . '</td><td>' . $nisno . '</td><td>' . $rank . '</td>
+                    <td>' . $phone1 . '</td><td>' . $email . '</td><td><a title=\"preview ".$firstname. "\"href=\"manage.php?preview=".$firstname."\"><i class=\"side-menu__icon fe fe-eye\" /></i></a></td></tr></tbody>';
+                    }
+                    ?>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    </div>
+
+
+
+                    <!-- end of default -->
+
+
+
                 <?php
                     if (isset($_REQUEST['edit'])) {
 		//query the database
 		$sql = mysqli_query($con, "SELECT * FROM local_staff WHERE first_name='" . htmlspecialchars($_REQUEST['edit'], ENT_QUOTES) . "' ");
-            
+
 		if(mysqli_num_rows($sql) == 0) {
 				echo "<h3 style=\"color:#0000cc;text-align:center;\">No data to edit..!</h3>";
 		}
 			else if ($x = mysqli_fetch_array($sql)) {
-	?>   
-                        
+	?>
+
                      <div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
                                                     <div class="card-header">
                                                         <h2 class="mb-0"><i class="fas fa-user"></i> BIO DATA</h2>
-										              </div> 
+										              </div>
 													<div class="form-group">
 														<label class="form-label">First Name</label>
 														<input type="text" class="form-control" name="first_name" placeholder="Firstname" value="<?php echo stickyForm('first_name'); ?>" autofocus required />
@@ -394,12 +337,12 @@
                 </form>
                 </div>
                 </div>
-            </div>       
-                  
-                <?php 
-            } 
+            </div>
+
+                <?php
+            }
                     }
-                            
+
     ?>
 
             

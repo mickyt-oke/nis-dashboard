@@ -34,10 +34,11 @@ $session = new Session();
 $message = $session->message();
 $archive = new Archive();
 $visa = new Visa();
-$visacat = new VisaCat();
+$visacat = new Visacat();
+
 
 restricted();
-if(isset($_SESSION["profile"])) {
+if(!isset($_SESSION["profile"])) {
     if(isLoginSessionExpired()) {
         $error[] = "Session Timeout. Please reauthenticate to continue";
         header("Location:logout.php?session_expired=1");

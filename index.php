@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 session_start();
 ob_start();
 
@@ -77,13 +75,14 @@ include_once 'config_2.php';
     <body id="page" oncontextmenu="return false;">
         <ul class="cb-slideshow">
             <li><span>Image 01</span><div><h3>nigeria immigration service </h3></div></li>
-            <li><span>Image 02</span><div><h3>unity in diversity</h3></div></li>
+            <li><span>Image 02</span><div><h3>promoting our heritage</h3></div></li>
             <li><span>Image 03</span><div><h3>automating missions</h3></div></li>
             <li><span>Image 04</span><div><h3>operational efficiency</h3></div></li>
-            <li><span>Image 05</span><div><h3>ease of doing business</h3></div></li>
-            <li><span>Image 06</span><div><h3></h3></div></li>
+            <li><span>Image 05</span><div><h3>technological advancement</h3></div></li>
+            <li><span>Image 06</span><div><h3>unity in diversity</h3></div></li>
         </ul>
         <div class="container">
+            <div class="col-md-12"><?php error($errors); success($message); ?></div>
             <!-- Codrops top bar -->
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
@@ -98,7 +97,6 @@ include_once 'config_2.php';
             </div><!--/ Codrops top bar -->
             
             <header>
-                <?php error($errors); success($message); ?>
                 <h1>NIS<span> DIPLOMATIC MISSIONS </span>PORTAL</h1>
                 <h2>Automation & Integration of Foreign Missions</h2>
             </header>

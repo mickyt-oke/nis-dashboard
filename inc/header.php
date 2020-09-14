@@ -67,26 +67,26 @@
                                
 							</ul>
 						</li>
-						<li class="slide">
+						<!--<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-edit"></i><span class="side-menu__label">Reports</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="compose.php?p=new" class="slide-item">Compose Reports</a>
+									<a href="compose.php?p=new" class="slide-item">Compose New</a>
 								</li>
 								<li>
 									<a href="compose.php?p=manage" class="slide-item">Manage Reports</a>
 								</li>
 							</ul>
 						</li>
-                        
+                        -->
                         <li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-globe"></i><span class="side-menu__label">I &amp; R</span><i class="angle fa fa-angle-right"></i></a>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-globe"></i><span class="side-menu__label">COD Applications</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="change-of-data.php" class="slide-item">Applications</a>
+									<a href="change-of-data.php" class="slide-item">New Application</a>
 								</li>
                                 <li>
-									<a href="approvals.php" class="slide-item">Approvals</a>
+									<a href="approvals.php" class="slide-item">Repository</a>
 								</li>
                                 <li>
 									<a href="requirements.php" class="slide-item">Requirements</a>
@@ -98,7 +98,7 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">Staff Management</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="manage.php" class="slide-item">Manage Records</a>
+									<a href="manage.php" class="slide-item">Manage Profile</a>
 								</li>
 								<!--<li>
 									<a href="#" class="slide-item">Manage Request</a>

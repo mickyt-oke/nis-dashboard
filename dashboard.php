@@ -34,7 +34,7 @@ if (!isAdmin()){
 												  <i class="fas fa-users mr-2"></i>
 												  NIS Attaches 
 												</p>
-												<h2 class="text-danger text-xxl">80</h2>
+												<h2 class="text-danger text-xxl">95</h2>
 												<p class="text-muted"> officers</p>
 											</div>
 										</div>
@@ -64,8 +64,8 @@ if (!isAdmin()){
 												  <i class="fas fa-users mr-2"></i>
 												  Local Staff
 												</p>
-												<h2 class="text-danger text-xxl">200</h2>
-												<p class="text-muted"> registered</p>
+												<h2 class="text-danger text-xxl"></h2>
+												<p class="text-muted"> </p>
 											</div>
 										</div>
 										<div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 stats">
@@ -74,7 +74,7 @@ if (!isAdmin()){
 												  <i class="fas fa-file"></i>
 												 Reports 
 												</p>
-												<h2 class="text-danger text-xxl">1</h2>
+												<h2 class="text-danger text-xxl"></h2>
 												<a href="manage-returns.php" class="btn btn-outline-secondary btn-pill btn-sm">view </a>
 											</div>
 										</div>
@@ -97,7 +97,7 @@ if (!isAdmin()){
 										<div class="">
 
                                             <div class="col-xl-12">
-                                            <table class="table card-table ta<div id="Highchart8" class="chartsh"></div>ble-vcenter text-nowrap align-items-center">
+                                            <table class="table card-table ta<div id="Highchart8" class="chartsh" table-vcenter text-nowrap align-items-center">
 												<thead class="thead-light">
 												<tr>
                                                     <td>Continent</td>

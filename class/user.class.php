@@ -24,7 +24,7 @@ class User {
 	}
 
 	// Read row(s) from the database table
-	public function getUsers() {
+	public function getUser() {
 		$statement = $this->database->prepare("SELECT * FROM users");
 		$statement->execute();
 		$results = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -40,7 +40,6 @@ class User {
 
 		return $results ? $results : false;
 	}
-
 	public function countAll() {
 		$statement = $this->database->prepare("SELECT COUNT(*) AS count FROM users");
 		$statement->execute();

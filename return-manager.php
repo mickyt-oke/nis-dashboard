@@ -1,4 +1,6 @@
-<?php require_once 'core/init.php'; ?>
+<?php require_once 'core/init.php';
+        require_once 'core/init2.php';
+?>
 
     <?php require_once 'inc/header.php'; ?>
 <!-- Page content -->
@@ -9,8 +11,7 @@
 									<li class="breadcrumb-item active" aria-current="page">Manage Returns</li>
 								</ol>
 							</div>
-    <div><?php error($errors);
-                success($message); ?>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow">
@@ -19,9 +20,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered w-100 text-nowrap">
-                            <thead>
+                     <?php if (isset($_SESSION['mission'])) {
+                         $mission = $_SESSION ['mission'];
+                        $sql = mysqli_query($con, "SELECT * FROM tbl_ppt WHERE missionid = ".$_SESSION['mission'].";");
+                        $c=1;
+                         echo '<table id="example" class="table table-striped table-bordered w-100 text-nowrap">
                             <tr>
+                                <th style="display: none;">mission</th>
                                 <th class="wd-10p">YEAR</th>
                                 <th class="wd-10p">Month</th>
                                 <th class="wd-25p">32 pages Issuance</th>
@@ -30,25 +35,30 @@
                                 <th class="wd-10p">Stock Balance (64)</th>
                                 <th class="wd-10p">Submitted</th>
                                 <th class="wd-5p">view</th>
-                            </tr>
-                            </thead>
+                            </tr>';
+                while ($result = mysqli_fetch_array($sql))
+                {
+                ?>
                             <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td style="display: none;"><?php echo ".$missionid."; ?></td>
+                                <td><?php echo $result['year']; ?></td>
+                                <td><?php echo $result['month']; ?></td>
+                                <td><?php echo $result['ppt_32']; ?></td>
+                                <td><?php echo $result['ppt_64']; ?></td>
+                                <td><?php echo $result['stock_bal_32']; ?></td>
+                                <td><?php echo $result['stock_bal_64']; ?></td>
+                                <td><?php echo $result['date']; ?></td>
                                 <td class="text-success" align="center"><i class="fa-2x fa fa-book-open"></i></td>
                             </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
         <div class="col-lg-12">
             <div class="card shadow">
                 <div class="card-header bg-gradient-red">

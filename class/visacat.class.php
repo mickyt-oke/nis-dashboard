@@ -1,8 +1,7 @@
 <?php
-class VisaCat {
+class Visacat {
 	private $database;
-	public $month, $year, $missionid, $userid, $countryid, $continentid, $diplomatic, $tourist, $business, $transit, $official, $twp
-	, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments;
+	public $month, $year, $missionid, $userid, $countryid, $continentid, $diplomatic, $tourist, $business, $transit, $official, $twp, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments;
 
 	public function __construct() {
 		$this->database = new Connection();
@@ -28,10 +27,10 @@ class VisaCat {
 		$statement->bindParam(13, $this->visa_rev);
 		$statement->bindParam(14, $this->comments);
 
-        $statement->bindParam(14, $_SESSION['mission']);
-		$statement->bindParam(15, $_SESSION['profile']);
-		$statement->bindParam(16, $_SESSION['country']);
-		$statement->bindParam(17, $_SESSION['continent']);
+        $statement->bindParam(15, $_SESSION['mission']);
+		$statement->bindParam(16, $_SESSION['profile']);
+		$statement->bindParam(17, $_SESSION['country']);
+		$statement->bindParam(18, $_SESSION['continent']);
 
 		// Execute the query
 		$result = $statement->execute();

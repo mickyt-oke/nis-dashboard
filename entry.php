@@ -12,7 +12,8 @@
         <div class="row">
           	<div class="col-md-12">
 				<h2>MONTHLY RETURNS ENTRY</h2>
-
+                <div class="col-md-12"><?php error($errors);
+                    success($message); ?></div>
 				<div class="card shadow">
 					<div class="card-body">
 							<div class="email-app card shadow">
@@ -79,7 +80,7 @@
                         if (empty($errors)) {
                             if ($entry->createEntry()) {
                                 $session->message("Submission Successful");
-                                //redirectTo('entry.php?q=2');
+                                redirectTo('entry.php?q=2');
                             }
                         }
                         else{
@@ -88,7 +89,7 @@
                 }
                 ?>
                  <div class="inbox card-body">
-					    <form action="entry.php?q=1" onsubmit="return validateform()" method="post">
+					    <form action="entry.php?q=1" method="post">
                             <div class="form-row mb-2">
                                 <div class="col-md-12"><?php error($errors);
                                     success($message); ?></div>
@@ -217,13 +218,14 @@
 										</div>
                                         <input type="hidden" name="returns" value="returnsentry">
                                     </form>
-                            </div>
+                 </div>
+
 
 		<?php } ?>
 
                                 <?php if(@$_GET['q']== 2) {
                                 if (isset($_POST['subreturns'])) {
-                                    $required = array('');
+                                    $required = array('month', 'year');
 
                                     foreach ($_POST as $key => $value) {
                                         if (empty($value) && in_array($key, $required)) {
@@ -252,16 +254,14 @@
 
                                     if (empty($errors)) {
                                         if ($visacat->createVisa()) {
-                                            $session->message("Submission Successful.</a>");
+                                            $session->message("Submission Successful");
                                         }
-                                    } else
-                                        {
-                                        $errors[] = "Record incorrect. Please Check again.";
                                     }
                                         }
                                 ?>
-                                <div class="inbox card-body">
-                                    <form action="entry.php?q=2" onsubmit="return validateform()" method="post">
+
+                                   <div class="inbox card-body">
+                                       <form action="entry.php?q=2" method="post">
                                         <div class="col-md-12"><?php error($errors);
                                             success($message); ?></div>
                                         <div class="form-row mb-2">
@@ -306,7 +306,7 @@
                                         <div class="input-group mb-2">
                                             <div class="col-md-4">Opening stock </div>
                                             <div class="col-md-4">
-                                                <input type="number" class="form-control" name="opnbal" placeholder="" value="<?php echo stickyForm('stkbal'); ?>">
+                                                <input type="number" class="form-control" name="opnbal" placeholder="" value="<?php echo stickyForm('opnbal'); ?>">
                                             </div>
                                         </div>
                                         <hr />
@@ -363,7 +363,7 @@
                                         <div class="input-group mb-4">
                                             <div class="col-md-4">Balance in stock</div>
                                             <div class="col-md-4">
-                                                <input type="number" name="stkbal" class="form-control" placeholder="" value="<?php echo stickyForm('bal'); ?>">
+                                                <input type="number" name="stkbal" class="form-control" placeholder="" value="<?php echo stickyForm('stkbal'); ?>">
                                             </div>
                                         </div>
                                         <div class="input-group mb-4">
@@ -381,17 +381,15 @@
                                                 <button type="reset" value="reset" class="btn btn-sm btn-light mt-1 mb-1">Clear</button>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="subreturns" value="subentry">
+                                        <input type="hidden" name="subreturns" value="subreturns">
                                     </form>
-                                </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
-                        <?php
-                        }
-                        ?>
-
-							</div>
-                        </div>
-					</div>
-				</div>
              </div>
+            </div>
+			</div>
+		</div>
 <?php include_once 'inc/footer.php';  ?>

@@ -73,7 +73,7 @@
 								</li>
 							</ul>
 						</li>
-                        <li class="slide">
+                        <!--<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-edit"></i><span class="side-menu__label">Reports</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
                                 <li>
@@ -81,7 +81,7 @@
 								</li>
 								
 							</ul>
-						</li>
+						</li>-->
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Staff Management</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
@@ -89,7 +89,7 @@
 									<a href="register.php" class="slide-item">Add New Staff</a>
 								</li>
 								<li>
-									<a href="manage.php" class="slide-item">Manage/Update Records</a>
+									<a href="manage-all.php" class="slide-item">Manage/Update Records</a>
 								</li>
 								<li>
 									<a href="register.php?p=1" class="slide-item">Add Local Staff</a>
@@ -108,7 +108,7 @@
 								</li>
 							</ul>
 						</li>
-						<li class="slide">
+						<!--<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Stock Management</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
@@ -118,7 +118,7 @@
 									<a href="#" class="slide-item">Visa Inventory </a>
 								</li>
 							</ul>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 			</aside>
