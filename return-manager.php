@@ -1,8 +1,12 @@
 <?php require_once 'core/init.php';
         require_once 'core/init2.php';
+admin();
+if (!isAdmin()){
+    redirectTo ('dash.php');
+}
 ?>
 
-    <?php require_once 'inc/header.php'; ?>
+    <?php require_once 'inc/header-2.php'; ?>
 <!-- Page content -->
 						<div class="container-fluid pt-8">
 							<div class="page-header mt-0 shadow p-3">
@@ -22,11 +26,11 @@
                     <div class="table-responsive">
                      <?php if (isset($_SESSION['mission'])) {
                          $mission = $_SESSION ['mission'];
-                        $sql = mysqli_query($con, "SELECT * FROM tbl_ppt WHERE missionid = ".$_SESSION['mission'].";");
+                        $sql = mysqli_query($con, "SELECT * FROM tbl_ppt ;");
                         $c=1;
                          echo '<table id="example" class="table table-striped table-bordered w-100 text-nowrap">
                             <tr>
-                                <th style="display: none;">mission</th>
+                                <th class="wd-5p">mission</th>
                                 <th class="wd-10p">YEAR</th>
                                 <th class="wd-10p">Month</th>
                                 <th class="wd-25p">32 pages Issuance</th>
@@ -41,7 +45,7 @@
                 ?>
                             <tbody>
                             <tr>
-                                <td style="display: none;"><?php echo ".$missionid."; ?></td>
+                                <td><?php echo $result['missionid']; ?></td>
                                 <td><?php echo $result['year']; ?></td>
                                 <td><?php echo $result['month']; ?></td>
                                 <td><?php echo $result['ppt_32']; ?></td>

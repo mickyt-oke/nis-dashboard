@@ -30,7 +30,7 @@
 												  <i class="fas fa-users mr-2"></i>
 												  Attaches 
 												</p>
-												<h2 class="text-yellow text-xl"><?php echo $user->countAll(); ?></h2>
+												<h2 class="text-yellow text-xl"><?php echo $user->countAll($_SESSION['mission']); ?></h2>
 												
 											</div>
 										</div>

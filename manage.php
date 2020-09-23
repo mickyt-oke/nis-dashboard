@@ -1,6 +1,6 @@
 <?php require_once 'core/init.php'; ?>
 <?php require_once 'core/init2.php';
-get_current_user();
+
 ?>
 
 <?php include_once 'inc/header.php'; ?>
@@ -12,102 +12,6 @@ get_current_user();
 									<li class="breadcrumb-item active" aria-current="page">Manage Records</li>
 								</ol>
 							</div>
-							
-    <?php
-        if (isset($_REQUEST['view'])) {
-		//query the database
-		$sql = mysqli_query($con, "SELECT * FROM local_staff WHERE first_name='" . htmlspecialchars($_REQUEST['view'], ENT_QUOTES) . "' ");
-
-		if(mysqli_num_rows($sql) == 0) {
-				echo "<h3 style=\"color:#0000cc;text-align:center;\">No Information to display..!</h3>";
-		}
-			else if ($x = mysqli_fetch_array($sql)) {
-	?>
-
-                <!-- modal dialog-->
-								<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h2 class="modal-title" id="largeModalLabel">PROFILE OF <?php echo $x['first_name']; ?></h2>
-											<a href="manage.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-                                                </button></a>
-										</div>
-										<div class="modal-body">
-                                            <h2 class="mb-0">BIO-DATA</h2>
-											<div class="table-responsive border ">
-														<table class="table row table-borderless w-100 m-0 ">
-															<tbody class="col-lg-6 p-0">
-																<tr>
-																	<td><strong>First Name: </strong> <?php echo $x['first_name']; ?></td>
-																</tr>
-																<tr>
-																	<td><strong>Last Name: </strong> <?php echo $x['last_name']; ?></td>
-																</tr>
-																<tr>
-																	<td><strong>DOB: </strong> <?php echo $x['dob']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>Gender: </strong> <?php echo $x['sex']; ?></td>
-																</tr>
-															</tbody>
-															<tbody class="col-lg-6 p-0">
-                                                                <tr>
-																	<td><strong>Phone: </strong> <?php echo $x['mail']; ?></td>
-																</tr>
-																 <tr>
-																	<td><strong>Phone: </strong> <?php echo $x['mobile']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>Address: </strong> <?php echo $x['address']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>City: </strong> <?php echo $x['city']; ?></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-                                        <h2 class="mb-0">WORK INFORMATION</h2>
-											<div class="table-responsive border ">
-														<table class="table row table-borderless w-100 m-0 ">
-															<tbody class="col-lg-6 p-0">
-																<tr>
-																	<td><strong>Designation: </strong> <?php echo $x['designation']; ?></td>
-																</tr>
-																<tr>
-																	<td><strong>Date Employed: </strong> <?php echo $x['appt_date']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>Guarantor: </strong> <?php echo $x['guarantor']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>Country: </strong> <?php echo $x['country']; ?></td>
-																</tr>
-                                                                <tr>
-																	<td><strong>Mission: </strong> <?php echo $x['mission']; ?></td>
-																</tr>
-															</tbody>
-															<tbody class="col-lg-6 p-0">
-                                                                <tr>
-                                                                    <td>&nbsp;</td>
-                                                                </tr>
-																 <tr >
-                                                                     <td style="background-image: url(assets/img/default_avatar.png); height: 128px; width: 128px; border: 1px solid; ">
-                                                                         <img src="<?php echo $x['image']; ?>" alt="image" /></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-										</div>
-										<div class="modal-footer">
-                                            <a href="manage.php"><button type="button" class="btn btn-secondary">Close</button></a>
-										</div>
-									</div>
-								</div>
-                    <?php }
-                    }
-                ?>
-
                 <!-- STAFF -->
     <?php
         if (isset($_REQUEST['preview'])) {
@@ -223,31 +127,28 @@ get_current_user();
                 </div>
                 <div class="card-body">
                     <?php if (isset($_SESSION['profile'])) {
-                    $profile = $_SESSION['profile'];
+
                     //query the database
-                    $sql = mysqli_query($con,"SELECT * FROM profile WHERE firstname !='".$_SESSION['us3rid']."';");
+                    $sql = mysqli_query($con,"SELECT `id`,`firstname`,`nisno`,`rank`,`email`,`mission`, `phone1` FROM profile WHERE mission='".$_SESSION['profile']."';");
                                 echo  '<div class="table-responsive">
 <table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
-<tr><th class="wd-15p">Full name</th><th class="wd-10p">Service No</th><th class="wd-15p">Rank</th><th class="wd-15p">Phone</th><th class="wd-20p">E-mail</th><th class="wd-5p">Manage</th></tr>';
-                    $c=0;
-                    if ($r=mysqli_fetch_array($sql)) {
-                        $firstname = $r['firstname'];
-                        $nisno = $r['nisno'];
-                        $rank = $r['rank'];
-                        $phone1 = $r['phone1'];
-                        $email = $r['email'];
+<tr><th><i class="fa fa-check-square-o"></i></th><th class="wd-15p">Full name</th><th class="wd-10p">Service No</th><th class="wd-15p">Rank</th><th class="wd-15p">Phone</th><th class="wd-20p">E-mail</th><th class="wd-5p"></th></tr>';
+                    if (mysqli_num_rows($sql)== 0) {
+                        echo '<div style="\color:red\" class="\col-md-12"\>Result not found</div>';
+                    }
+                    else if ($r=mysqli_fetch_array($sql)){
                         echo
                             '<tbody><tr>
-                           <td>' . $firstname . '</td><td>' . $nisno . '</td><td>' . $rank . '</td>
-                    <td>' . $phone1 . '</td><td>' . $email . '</td><td><a title=\"preview ".$firstname. "\"href=\"manage.php?preview=".$firstname."\"><i class=\"side-menu__icon fe fe-eye\" /></i></a></td></tr></tbody>';
+                           <td style="display:none;">' . $r['id'] . '</td><td>' . $r['firstname'] . '</td><td>' . $r['nisno'] . '</td><td>' . $r['rank'] . '</td>
+                    <td>' . $r['phone1'] . '</td><td>' . $r['email'] . '</td><td>' . $r['mission'] . '</td><td><a class="btn btn-success btn-sm" href="">Manage</a></td></tr></tbody>';
                     }
                     ?>
                     </table>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-    <?php } ?>
     </div>
 
 

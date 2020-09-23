@@ -41,6 +41,7 @@
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
+
 </head>
 <body class="app sidebar-mini rtl" oncontextmenu="return false;">
 	<div id="global-loader" ></div>
@@ -50,7 +51,7 @@
 			<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 			<aside class="app-sidebar ">
 				<div class="sidebar-img">
-					<a class="navbar-brand" href="dash.php"><img alt="..." class="navbar-brand-img main-logo" src="admin/assets/img/brand/diplomat.png"> <img alt="..." class="navbar-brand-img logo" src="assets/img/brand/logo3.jpg"></a>
+					<a class="navbar-brand" href="dash.php"><img alt="..." class="navbar-brand-img main-logo" src="assets/img/brand/diplomat.png"> <img alt="..." class="navbar-brand-img logo" src="assets/img/brand/logo3.jpg"></a>
 					<ul class="side-menu">
 						<li class="slide">
 							<a class="side-menu__item active" href="dash.php"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
@@ -62,7 +63,7 @@
 									<a href="entry.php" class="slide-item">Add Returns</a>
 								</li>
                                 <li>
-									<a href="return-manager.php" class="slide-item">Manage Returns</a>
+									<a href="#" class="slide-item">Manage Returns</a>
 								</li>
                                
 							</ul>

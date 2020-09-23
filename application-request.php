@@ -5,7 +5,7 @@
         }
 ?>
 
-<?php include_once 'inc/header.php'; 
+<?php include_once 'inc/header-2.php';
 ?>
 <!-- Page content -->
 						<div class="container-fluid pt-8">

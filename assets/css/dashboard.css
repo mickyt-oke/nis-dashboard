@@ -10063,6 +10063,10 @@ img.profile-photo-lg {
 .email-app nav .nav .nav-item {
 	position: relative;
 }
+.email-app nav .nav .nav-item .active {
+	background-color: #00acee;
+	color: #00acee;
+}
 .email-app nav .nav .nav-item .nav-link, .email-app nav .nav .nav-item .navbar .dropdown-toggle, .navbar .email-app nav .nav .nav-item .dropdown-toggle {
 	color: #70768e;
 	border-bottom: 1px solid #dae0ef;

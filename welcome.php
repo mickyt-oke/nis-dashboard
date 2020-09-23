@@ -125,7 +125,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
                 <div class="col-md-12">
                     <div class="card-profile overflow-hidden">
                         <div class="row justify-content-center">
-                                    <div class="col-md-6 col-lg-6 col-xl-3">
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
                                         <div class="card shadow">
                                     <div class="card-body text-center">
                                         <i class="fas fa-envelope-open-text fa-3x text-default"></i>
@@ -135,7 +135,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
                                         </div>
                                     </div>
 
-								<div class="col-md-6 col-lg-6 col-xl-3">
+								<div class="col-md-6 col-lg-6 col-xl-6">
 									<div class="card shadow">
 										<div class="card-body text-center">
 											<i class="fas fa-book fa-3x text-warning"></i>
@@ -145,7 +145,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 										</div>
 									</div>
 								</div>
-
+                                <!--
 								<div class="col-md-6 col-lg-6 col-xl-3">
 									<div class="card shadow">
 										<div class="card-body text-center">
@@ -164,7 +164,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form4" >Enter</button>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
                      </div></div></div>

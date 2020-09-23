@@ -34,7 +34,7 @@
 	<!-- Custom scroll bar Js-->
 	<script src="assets/plugins/customscroll/jquery.mCustomScrollbar.concat.min.js"></script>
 
-
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 	<!-- Ansta JS -->
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/dashboard-sales.js"></script>
@@ -50,7 +50,6 @@
 	<!-- peitychart -->
 	<script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
 	<script src="assets/plugins/peitychart/peitychart.init.js"></script>
-
 	<!-- Vector Plugin -->
 	<script src="assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>

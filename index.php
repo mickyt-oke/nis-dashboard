@@ -82,7 +82,7 @@ include_once 'config_2.php';
             <li><span>Image 06</span><div><h3>unity in diversity</h3></div></li>
         </ul>
         <div class="container">
-            <div class="col-md-12"><?php error($errors); success($message); ?></div>
+            <div class="col-md-12"><?php error($errors); ?></div>
             <!-- Codrops top bar -->
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
@@ -115,7 +115,7 @@ include_once 'config_2.php';
         			</div>
         			<p></p>
         			<div class="modal-body">
-        				<form action="index.php" method="post">
+        				<form action="index.php" method="post" onsubmit="return validateForm()">
 						<div class="form-group">
                          <input type="text" name="username" placeholder="User ID" class="form-control" value="<?php echo stickyForm('username') ?>" autofocus required />
                         </div>

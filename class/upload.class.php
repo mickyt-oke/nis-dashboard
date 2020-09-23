@@ -17,7 +17,7 @@
 		  	UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
 		);
 		
-		public function attach_file($file){
+		public function attachfile($file){
 			// Perform error checking on the form parameters
 			if(!$file || empty($file) || !is_array($file)) {
 			  // error: nothing uploaded or wrong argument usage

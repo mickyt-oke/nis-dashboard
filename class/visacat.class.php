@@ -1,19 +1,19 @@
 <?php
 class Visacat {
-	private $database;
-	public $month, $year, $missionid, $userid, $countryid, $continentid, $diplomatic, $tourist, $business, $transit, $official, $twp, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments;
+    private $database;
+    public $id, $diplomatic, $monthid, $yearid, $missionid, $countryid, $tourist, $business, $transit, $official, $twp, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments, $created, $userid, $continentid;
 
-	public function __construct() {
+    public function __construct() {
 		$this->database = new Connection();
 		$this->database = $this->database->connect();
 	}
 	
 	// Create record in database table
 	public function createVisa() {
-		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (month, year, diplomatic, business, transit, tourist, official, twp, str, damage, opn_bal, stockbal, visa_rev, comments, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (monthid, yearid, diplomatic, business, transit, tourist, official, twp, str, damage, opn_bal, stockbal, visa_rev, comments, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		// Bind all values to the placeholders
-		$statement->bindParam(1, $this->month);
-		$statement->bindParam(2, $this->year);
+		$statement->bindParam(1, $this->monthid);
+		$statement->bindParam(2, $this->yearid);
 		$statement->bindParam(3, $this->diplomatic);
 		$statement->bindParam(4, $this->business);
 		$statement->bindParam(5, $this->transit);

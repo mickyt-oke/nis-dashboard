@@ -66,10 +66,7 @@
 							<ul class="slide-menu">
                                 
 								<li>
-									<a href="manage-returns.php" class="slide-item">Manage Returns</a>
-								</li>
-								<li>
-									<a href="statistics.php" class="slide-item">Statistics</a>
+									<a href="return-manager.php" class="slide-item">Manage Returns</a>
 								</li>
 							</ul>
 						</li>
@@ -101,10 +98,10 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label"> Applications/Requests</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="application-request.php" class="slide-item">Application Requests</a>
+									<a href="application-request.php" class="slide-item">New Application</a>
 								</li>
                                 <li>
-									<a href="approvals.php" class="slide-item">Approvals</a>
+									<a href="approvals.php" class="slide-item">Requests</a>
 								</li>
 							</ul>
 						</li>

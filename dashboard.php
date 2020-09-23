@@ -72,10 +72,9 @@ if (!isAdmin()){
 											<div class="text-center">
 												<p class="text-light">
 												  <i class="fas fa-file"></i>
-												 Reports 
+												 Month in View
 												</p>
-												<h2 class="text-danger text-xxl"></h2>
-												<a href="manage-returns.php" class="btn btn-outline-secondary btn-pill btn-sm">view </a>
+												<h5 class="text-danger text-xxl"><?php $timestamp = time(); echo(date("F Y", $timestamp)) ?></h5>
 											</div>
 										</div>
                                        
@@ -90,7 +89,7 @@ if (!isAdmin()){
 											<div class="row align-items-center">
 												<div class="col">
 													<h6 class="text-uppercase text-muted ls-1 mb-1">Overview</h6>
-													<h2 class="mb-0">Missions Monthly Data</h2>
+													<h2 class="mb-0">2019 Monthly Submission Data</h2>
 												</div>
 											</div>
 										</div>
@@ -155,7 +154,7 @@ if (!isAdmin()){
 											<div class="row align-items-center">
 												<div class="col">
 													<h6 class="text-uppercase text-light ls-1 mb-1">oVERVIEW</h6>
-													<h2 class="mb-0">MONTHLY RETURNS STATISTICS</h2>
+													<h2 class="mb-0">2019 ANNUAL RETURNS STATISTICS</h2>
 												</div>
 											</div>
 										</div>
@@ -166,57 +165,29 @@ if (!isAdmin()){
 													<div class="card socailicons bg-success">
 														<div class="card-body  mb-0">
 															<small class="social-title">Issued Passports</small>
-															<h3 class="text-xl text-white  mb-0">27,823</h3>
+															<h3 class="text-xl text-white  mb-0">194,869</h3>
 															<i class="fab fa-book-open"></i>
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-6 col-lg-6 col-xl-6">
-													<div class="card socailicons bg-success">
-														<div class="card-body  mb-0">
-															<small class="social-title">Total Passports Revenue</small>
-															<h3 class="text-xl text-white  mb-0">$ 4,807,331</h3>
-															<i class="fab fa-book"></i>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-6 col-lg-6 col-xl-6">
-													<div class="card socailicons facebook-like1 mb-sm-0">
-														<div class="card-body  mb-0">
-															<small class="social-title">Issued Visas</small>
-															<h3 class="text-xl text-white  mb-0">86,258</h3>
-															<i class="fab fa-book"></i>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-6 col-lg-6 col-xl-6">
-													<div class="card socailicons facebook-like1 mb-sm-0">
-														<div class="card-body  mb-0">
-															<small class="social-title">Total Visas Revenue</small>
-															<h3 class="text-xl text-white mb-0">$ 256,000</h3>
-															<i class="fab fa-book"></i>
-														</div>
-													</div>
-												</div>
-                                                <div class="col-md-12" style="top:100px;">&nbsp;</div>
                                                 <div class="col-sm-6 col-lg-6 col-xl-6">
+                                                    <div class="card socailicons facebook-like1 mb-sm-0">
+                                                        <div class="card-body  mb-0">
+                                                            <small class="social-title">Issued Visas</small>
+                                                            <h3 class="text-xl text-white  mb-0">86,258</h3>
+                                                            <i class="fab fa-book"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+												<div class="col-sm-12 col-lg-12 col-xl-12">
 													<div class="card socailicons bg-danger">
 														<div class="card-body  mb-0">
-															<small class="social-title">Issued ETC</small>
-															<h3 class="text-xl text-white  mb-0">60,200</h3>
+															<small class="social-title">Revenue (Passports & Visas) </small>
+															<h3 class="text-xl text-white  mb-0">$ 41,046,279</h3>
 															<i class="fab fa-book"></i>
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-6 col-lg-6 col-xl-6">
-													<div class="card socailicons bg-danger">
-														<div class="card-body  mb-0">
-															<small class="social-title">Total ETC Revenue</small>
-															<h3 class="text-xl text-white mb-0">$ 105,000</h3>
-															<i class="fab fa-book"></i>
-														</div>
-													</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -224,7 +195,7 @@ if (!isAdmin()){
                             </div>
                           
                           
-                            <div class="card  shadow">
+                           <!-- <div class="card  shadow">
 										<div class="card-header bg-transparent">
 											<div class="row align-items-center">
 												<div class="col">
@@ -234,16 +205,16 @@ if (!isAdmin()){
 											</div>
 										</div>
 								<div class="card-body">
-								    <!-- Chart -->
+								    Chart
 								    <canvas id="sales-chart" class="chart-dropshadow h-335"></canvas>
 								</div>
-				            </div>
+				            </div>-->
                             
                             <div class="row">
 								<div class="col">
 									<div class="card shadow">
 										<div class="card-header bg-transparent border-0">
-											<h2 class=" mb-0">Annual Performance Evaluation Chart by Missions vis a vis Facilities &amp; Staff</h2>
+											<h2 class=" mb-0">2019 Annual Performance Evaluation Chart by Missions vis a vis Facilities &amp; Staff</h2>
 										</div>
 										<div class="">
 											<div class="grid-margin">
@@ -272,7 +243,7 @@ if (!isAdmin()){
 																	<td>U.K</td>
 																	<td>4</td>
                                                                     <td>5</td>
-																	<td>45,396</td>
+																	<td>44,861</td>
 																	<td>19,196</td>
                                                                     <td>64,592</td>
 																	<td>2</td>
@@ -284,7 +255,7 @@ if (!isAdmin()){
 																	<td>India</td>
 																	<td>2</td>
 																	<td>3</td>
-																	<td>1,427</td>
+																	<td>1,418</td>
 																	<td>16,391</td>
 																	<td>17,818</td>
 																	<td>0</td>
@@ -296,7 +267,7 @@ if (!isAdmin()){
 																	<td>USA</td>
 																	<td>2</td>
 																	<td>2</td>
-																	<td>14,561</td>
+																	<td>12,508</td>
 																	<td>2,194</td>
 																	<td>16,755</td>
 																	<td>1</td>
@@ -308,7 +279,7 @@ if (!isAdmin()){
 																	<td>USA</td>
 																	<td>2</td>
 																	<td>4</td>
-																	<td>14,006</td>
+																	<td>16,137</td>
 																	<td>2,443</td>
 																	<td>16,449</td>
 																	<td>2</td>
@@ -320,7 +291,7 @@ if (!isAdmin()){
 																	<td>Italy</td>
 																	<td>2</td>
 																	<td>1</td>
-																	<td>12,891</td>
+																	<td>10,374</td>
 																	<td>861</td>
 																	<td>13,752</td>
 																	<td>1</td>
@@ -332,7 +303,7 @@ if (!isAdmin()){
 																	<td>USA</td>
 																	<td>2</td>
 																	<td>1</td>
-																	<td>11,674</td>
+																	<td>10,391</td>
 																	<td>1,955</td>
 																	<td>13,629</td>
 																	<td>1</td>

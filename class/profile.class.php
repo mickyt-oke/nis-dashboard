@@ -1,7 +1,7 @@
 <?php
 class Profile {
 	private $database;
-	public $id, $nisno, $firstname, $middlename, $lastname, $gender, $rank, $email, $phone1, $address, $city, $state, $country, $mission, $phone2, $dofa, $dopa, $posted, $dob, $image;
+	public $id, $nisno, $firstname, $middlename, $lastname, $gender, $rank, $email, $phone1, $address, $city, $state, $country, $mission, $phone2, $dofa, $dopa, $posted, $dob, $image, $continent;
 
 	public function __construct() {
 		$this->database = new Connection();
@@ -10,7 +10,7 @@ class Profile {
 
 	// Create record in database table
 	public function createProfile() {
-		$statement = $this->database->prepare("INSERT INTO profile (nisno, firstname, middlename, lastname, gender, rank, email, phone1, address, city, state, country, mission, phone2, dofa, dopa, posted, dob, image) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$statement = $this->database->prepare("INSERT INTO profile (nisno, firstname, middlename, lastname, gender, rank, email, phone1, address, city, state, country, mission, phone2, dofa, dopa, posted, dob, image, continent) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		// Bind all values to the placeholders
 		$statement->bindParam(1, $this->nisno);
 		$statement->bindParam(2, $this->firstname);
@@ -30,7 +30,8 @@ class Profile {
         $statement->bindParam(16, $this->dopa);
         $statement->bindParam(17, $this->posted);
         $statement->bindParam(18, $this->dob);
-        $statement->bindParam(19, $this->image, PDO::PARAM_LOB);
+        $statement->bindParam(19, $this->image);
+        $statement->bindParam(20, $this->continent);
 
 		// Execute the query
 		$result = $statement->execute();
