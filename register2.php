@@ -16,7 +16,9 @@ if (!isAdmin()){
 
         <div class="row">
           	<div class="col-md-12">
-                <?php if (isset($_POST['register'])) {
+                <?php if(@$_GET['p']== 0) {
+                    // Process form request
+	if (isset($_POST['register'])) {
 	  $required = array('dob', 'email', 'password', 'firstname', 'lastname', 'rank', 'phone1', 'nisno', 'posted');
 
 	  foreach($_POST as $key=>$value) {
@@ -53,9 +55,20 @@ if (!isAdmin()){
         $profile->dopa = sanitize('dopa');
         $profile->posted = sanitize('posted');
 
-        $image_file = $_FILES['']
+          $file=$_FILES['image']['tmp_name'];
+          $image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
+          $image_name= addslashes($_FILES['image']['name']);
+          $image_size= getimagesize($_FILES['image']['tmp_name']);
 
-	    // Check for more errorss
+          if ($image_size==FALSE) {
+              echo "That's not an image!";
+          }else{
+              move_uploaded_file($_FILES["image"]["tmp_name"],"assets/img/attache" . $_FILES["image"]["name"]);
+              $location=$_FILES["image"]["name"];
+          }
+
+
+	    // Check for more errors
 	    if (!filter_var($profile->email, FILTER_VALIDATE_EMAIL)) {
 	      $errors[] = "Email is invalid.";
 	    }
@@ -68,14 +81,13 @@ if (!isAdmin()){
 	    if (!is_numeric($profile->phone1)) {
 	      $errors[] = "Phone must be numeric values only.";
 	    }
-	    if (strlen($profile->phone1) < 10) {
+	    if (strlen($profile->phone1) != 11) {
 	      $errors[] = "Phone number must be more than 10 digits.";
 	    }
 
 	    // If there are no errors, attempt to create record in database
 	    if (empty($errors)) {
-
-            // Create Profile record
+	      // Create Profile record
 	      if ($profile->createProfile()) {
 	        // Get the profileid from Profile class
 	        $user->profileid = $profile->id;
@@ -85,14 +97,14 @@ if (!isAdmin()){
 
 	        if ($user->createUser()) {
 	          $session->message("Attache Profile created successfully.");
-	          header("Location: register.php");
+	          header("refresh:3;register.php");
 	        }
 	      }
 	    }
 	  }
 	}
+                
 ?>
-                [
                 <h2>STAFF INFORMATION</h2>
                 <form action="register.php" enctype="multipart/form-data" method="post">
 						<div class="card shadow">
@@ -218,8 +230,8 @@ if (!isAdmin()){
 		                              <?php
 		                                  $country = $country->getCountry();
                                           foreach($country as $country) {
-		                                      echo "<option value='".$country['id']."'";
-		                                      echo stickySelect('countryid', $country['id']);
+		                                      echo "<option value='".$country['country']."'";
+		                                      echo stickySelect('countryid', $country['country']);
 		                                      echo ">".$country['country']."</option>";
 	                                       }
 		                              ?>
@@ -271,6 +283,7 @@ if (!isAdmin()){
 		      </div>
             </div>
             </div>
+                <?php } ?>
 
     </div>
                     </div>

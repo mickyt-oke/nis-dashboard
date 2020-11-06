@@ -1,33 +1,6 @@
 <?php require_once 'core/init.php'; ?>
-
-    <?php require_once 'inc/header.php'; ?>
-<!-- Page content -->
-						<div class="container-fluid pt-8">
-							<div class="page-header mt-0 shadow p-3">
-								<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="dash.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Passport Returns Entry</li>
-								</ol>
-							</div>
-        <div class="row">
-          	<div class="col-md-12">
-				<h2>MONTHLY RETURNS ENTRY</h2>
-
-				<div class="card shadow">
-					<div class="card-body">
-							<div class="email-app card shadow">
-								<nav class="p-0">
-									<ul class="nav">
-										<li class="nav-item active"><a class="nav-link mr-0 border-top" href="#">Passport</a></li>
-                                        <li class="nav-item"><a class="nav-link mr-0" href="visa-entry.php">Visa</a></li>
-                                        <!--<li class="nav-item"><a class="nav-link mr-0" href="add-new.php?p=4">Revenue</a></li> -->
-									</ul>
-								</nav>
-                                <!-- PASSPORT entry start-->
-
-                            
-                    <?php if (isset($_POST['returns'])) {
-                                    $required = array('month', 'year', 'issue32', 'issue64', 'dam32', 'dam64', 'bal32', 'bal64', 'stockbal32', 'stockbal64', 'ppt_revenue32', 'ppt_revenue64');
+              <?php if (isset($_POST['returns'])) {
+                                    $required = array('month', 'year');
             
                                     foreach($_POST as $key=>$value) {
                                     if (empty($value) && in_array($key, $required)) {
@@ -55,6 +28,7 @@
                                  $entry->stock_bal_64 = sanitize('stockbal64');
 
                                     // Check for more errors
+                                    /*
                                     if (strlen($entry->ppt_32) > ($entry->opn_bal_32)) {
                                         $errors[] = "Values of issuance + damaged must be lesser than stock balance (32 pages).";
                                     }
@@ -67,24 +41,49 @@
                                     if (strlen($entry->stock_bal_64) > ($entry->opn_bal_64)) {
                                         $errors[] = "Value of stock balance = issuance + damaged - opening stock (64 pages)";
                                     }
-                                    if (is_int($entry->ppt_rev_32)) {
+                                    */
+                                    if (is_integer($entry->ppt_rev_32)) {
                                         $errors[] = "Input figures only. Special chars not allowed (32 pages)";
                                     }
-                                    if (is_int($entry->ppt_rev_64)) {
+                                    if (is_integer($entry->ppt_rev_64)) {
                                         $errors[] = "Input figures only. Special chars not allowed (32 pages)";
                                     }
 							}
                             
                         if (empty($errors)) {
                             if ($entry->createEntry()) {
-                                $session->message("Submission Successful");
-                                header("Location: entry.php?successful");
+                                $session->message("Passport Submission Successful. Continue");
+                                header('Location: entry.php');
                             }
                         }
                 }
                 ?>
-                 <div class="inbox card-body">
-                     <?php success($message); error($errors); ?>
+<?php require_once 'inc/header.php'; ?>
+    <!-- Page content -->
+    <div class="container-fluid pt-8">
+    <div class="page-header mt-0 shadow p-3">
+        <ol class="breadcrumb mb-sm-0">
+            <li class="breadcrumb-item"><a href="dash.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Passport Returns Entry</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>MONTHLY RETURNS ENTRY</h2>
+            <?php success($message); ?>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="email-app card shadow">
+                        <nav class="p-0">
+                            <ul class="nav">
+                                <li class="nav-item active"><a class="nav-link mr-0 border-top" href="#">Passport</a></li>
+                                <li class="nav-item"><a class="nav-link mr-0" href="visa-entry.php">Visa</a></li>
+                                <!--<li class="nav-item"><a class="nav-link mr-0" href="add-new.php?p=4">Revenue</a></li> -->
+                            </ul>
+                        </nav>
+                        <!-- PASSPORT entry start-->
+
+                        <div class="inbox card-body">
 					    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                             <div class="form-row mb-2">
                                 <h2 class="col-md-4">PASSPORT RETURNS</h2>
@@ -135,31 +134,31 @@
                                         <div class="input-group mb-2">
 											<div class="col-md-6">Opening Stock </div>
 											<div class="col-md-6">
-												<input type="number" class="form-control" name="bal32" placeholder="in stock" value="<?php echo stickyForm('bal32'); ?>" required />
+												<input type="number" class="form-control" name="bal32" placeholder="in stock" value="<?php echo stickyForm('bal32'); ?>" />
 											</div>
 										</div>
 										<div class="input-group mb-2">
 											<div class="col-md-6">Issuance</div>
 											<div class="col-md-6">
-												<input type="number" class="form-control" name="issue32" placeholder="total issued" value="<?php echo stickyForm('issue32'); ?>" required />
+												<input type="number" class="form-control" name="issue32" placeholder="total issued" value="<?php echo stickyForm('issue32'); ?>" />
 											</div>
 										</div>
 										<div class="input-group mb-2">
-											<div class="col-md-6">Damaged</div>
+                                            <div class="col-md-6">Damaged</div>
 											<div class="col-md-6">
-												<input type="number" name="dam32" class="form-control" placeholder="damaged" value="<?php echo stickyForm('dam32'); ?>" required />
+												<input type="number" name="dam32" class="form-control" placeholder="damaged" value="<?php echo stickyForm('dam32'); ?>" />
 											</div>
                                         </div>
                                         <div class="input-group mb-2">
 											<div class="col-md-6">Balance</div>
 											<div class="col-md-6">
-												<input type="number" name="stockbal32" class="form-control" placeholder="after issue" value="<?php echo stickyForm('stockbal32'); ?>" required />
+												<input type="number" name="stockbal32" class="form-control" placeholder="after issue" value="<?php echo stickyForm('stockbal32'); ?>" />
 											</div>
                                         </div>
                                         <div class="input-group mb-2">
 											<div class="col-md-6">Revenue (in USD)</div>
 											<div class="col-md-6">
-												<input type="number" name="ppt_revenue32" class="form-control" placeholder="digits only" value="<?php echo stickyForm('ppt_revenue32'); ?>" required />
+												<input type="number" name="ppt_revenue32" class="form-control" placeholder="digits only" value="<?php echo stickyForm('ppt_revenue32'); ?>" />
 											</div>
                                         </div>
 					</div>
@@ -173,31 +172,31 @@
                         <div class="input-group mb-2">
                             <div class="col-md-6">Opening Stock </div>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="bal64" placeholder="in stock" value="<?php echo stickyForm('bal64'); ?>" required />
+                                <input type="number" class="form-control" name="bal64" placeholder="in stock" value="<?php echo stickyForm('bal64'); ?>" />
                             </div>
                         </div>
                         <div class="input-group mb-2">
                             <div class="col-md-6">Issuance</div>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="issue64" placeholder="total issued" value="<?php echo stickyForm('issue64'); ?>" required />
+                                <input type="number" class="form-control" name="issue64" placeholder="total issued" value="<?php echo stickyForm('issue64'); ?>" />
                             </div>
                         </div>
                         <div class="input-group mb-2">
                             <div class="col-md-6">Damaged</div>
                             <div class="col-md-6">
-                                <input type="number" name="dam64" class="form-control" placeholder="damaged" value="<?php echo stickyForm('dam64'); ?>" required />
+                                <input type="number" name="dam64" class="form-control" placeholder="damaged" value="<?php echo stickyForm('dam64'); ?>" />
                             </div>
                         </div>
                         <div class="input-group mb-2">
                             <div class="col-md-6">Balance</div>
                             <div class="col-md-6">
-                                <input type="number" name="stockbal64" class="form-control" placeholder="after issue" value="<?php echo stickyForm('stockbal64'); ?>" required />
+                                <input type="number" name="stockbal64" class="form-control" placeholder="after issue" value="<?php echo stickyForm('stockbal64'); ?>" />
                             </div>
                         </div>
                         <div class="input-group mb-2">
                             <div class="col-md-6">Revenue (in USD)</div>
                             <div class="col-md-6">
-                                <input type="number" name="ppt_revenue64" class="form-control" placeholder="digits only" value="<?php echo stickyForm('ppt_revenue64'); ?>" required />
+                                <input type="number" name="ppt_revenue64" class="form-control" placeholder="digits only" value="<?php echo stickyForm('ppt_revenue64'); ?>" />
                             </div>
                         </div>
 					</div>

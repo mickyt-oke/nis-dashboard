@@ -1,7 +1,7 @@
 <?php
 class Visacat {
     private $database;
-    public $id, $diplomatic, $monthid, $yearid, $missionid, $countryid, $tourist, $business, $transit, $official, $twp, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments, $created, $userid, $continentid;
+    public $id, $diplomatic, $month, $yearid, $missionid, $countryid, $tourist, $business, $transit, $official, $twp, $str, $damage, $opn_bal, $stockbal, $visa_rev, $comments, $created, $userid, $continentid;
 
     public function __construct() {
 		$this->database = new Connection();
@@ -10,9 +10,9 @@ class Visacat {
 	
 	// Create record in database table
 	public function createVisa() {
-		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (monthid, yearid, diplomatic, business, transit, tourist, official, twp, str, damage, opn_bal, stockbal, visa_rev, comments, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$statement = $this->database->prepare("INSERT INTO tbl_visa_class (month, yearid, diplomatic, business, transit, tourist, official, twp, str, damage, opn_bal, stockbal, visa_rev, comments, missionid, userid, countryid, continentid) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		// Bind all values to the placeholders
-		$statement->bindParam(1, $this->monthid);
+		$statement->bindParam(1, $this->month);
 		$statement->bindParam(2, $this->yearid);
 		$statement->bindParam(3, $this->diplomatic);
 		$statement->bindParam(4, $this->business);
@@ -56,8 +56,12 @@ class Visacat {
 
 		return !empty($result['count']) ? $result['count'] : false;
 	}
+    public function getVisaReturn($missionid) {
+        $statement = $this->database->prepare("SELECT * FROM tbl_visa_class WHERE missionid = :mission ORDER BY month DESC");
+        $statement->execute(array("mission"=>$missionid));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-	// Update row in table
+        return $result ? $result : false;
+    }
 
-	// Delete record from table
 }

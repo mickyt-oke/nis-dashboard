@@ -25,34 +25,35 @@ if (!isAdmin()){
                 <div class="card-body">
                     <div class="table-responsive">
                      <?php if (isset($_SESSION['mission'])) {
-                         $mission = $_SESSION ['mission'];
                         $sql = mysqli_query($con, "SELECT * FROM tbl_ppt ;");
                         $c=1;
-                         echo '<table id="example" class="table table-striped table-bordered w-100 text-nowrap">
-                            <tr>
+                        ?>
+                         <table id="example" class="table table-striped table-bordered w-100 text-nowrap">
+                            <thead>
                                 <th class="wd-5p">mission</th>
-                                <th class="wd-10p">YEAR</th>
                                 <th class="wd-10p">Month</th>
-                                <th class="wd-25p">32 pages Issuance</th>
-                                <th class="wd-25p">64 pages Issuance</th>
-                                <th class="wd-10p">Stock Balance (32)</th>
-                                <th class="wd-10p">Stock Balance (64)</th>
-                                <th class="wd-10p">Submitted</th>
+                                <th class="wd-25p">32p Opening</th>
+                                <th class="wd-25p">64p Opening </th>
+                                <th class="wd-25p">32p Issuance</th>
+                                <th class="wd-25p">64p Issuance</th>
+                                <th class="wd-10p">32p Balance</th>
+                                <th class="wd-10p">64p Balance</th>
                                 <th class="wd-5p">view</th>
-                            </tr>';
+                            </thead>
+                             <tbody>
+                <?php
                 while ($result = mysqli_fetch_array($sql))
                 {
-                ?>
-                            <tbody>
+               ?>
                             <tr>
                                 <td><?php echo $result['missionid']; ?></td>
-                                <td><?php echo $result['year']; ?></td>
                                 <td><?php echo $result['month']; ?></td>
+                                <td><?php echo $result['opn_bal_32']; ?></td>
+                                <td><?php echo $result['opn_bal_64']; ?></td>
                                 <td><?php echo $result['ppt_32']; ?></td>
                                 <td><?php echo $result['ppt_64']; ?></td>
                                 <td><?php echo $result['stock_bal_32']; ?></td>
                                 <td><?php echo $result['stock_bal_64']; ?></td>
-                                <td><?php echo $result['date']; ?></td>
                                 <td class="text-success" align="center"><i class="fa-2x fa fa-book-open"></i></td>
                             </tr>
                             <?php } ?>

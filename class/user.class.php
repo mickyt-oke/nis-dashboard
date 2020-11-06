@@ -40,9 +40,18 @@ class User {
 
 		return $results ? $results : false;
 	}
+
 	public function countAll() {
 		$statement = $this->database->prepare("SELECT COUNT(*) AS count FROM users");
 		$statement->execute();
+		$result = $statement->fetch();
+
+		return !empty($result['count']) ? $result['count'] : false;
+	}
+
+	public function countAttache($missionid) {
+		$statement = $this->database->prepare("SELECT COUNT(missionid) AS count FROM users WHERE missionid = :id");
+		$statement->execute(array("id"=> $missionid));
 		$result = $statement->fetch();
 
 		return !empty($result['count']) ? $result['count'] : false;
@@ -52,7 +61,9 @@ class User {
 		$statement = $this->database->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
 		$statement->execute(array("username"=>$username, "password"=>$password));
 
-		$result = $statement->fetch();
+		$result = $statement->fetch(
+
+        );
 
 		// Create SESSION variables for logged in user
 		if ($result) {
@@ -78,8 +89,4 @@ class User {
 		}
 		return false;
 	}
-
-	// Update row in table
-
-	// Delete record from table
 }

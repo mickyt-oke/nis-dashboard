@@ -55,8 +55,4 @@ class Mission {
 
 		return !empty($result['count']) ? $result['count'] : false;
 	}
-
-	// Update row in table
-
-	// Delete record from table
 }

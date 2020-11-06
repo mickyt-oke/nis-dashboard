@@ -68,6 +68,10 @@
 								<li>
 									<a href="return-manager.php" class="slide-item">Manage Returns</a>
 								</li>
+                                <li>
+									<a href="report.php" class="slide-item">Generate Returns</a>
+								</li>
+
 							</ul>
 						</li>
                         <!--<li class="slide">
@@ -89,7 +93,7 @@
 									<a href="manage-all.php" class="slide-item">Manage/Update Records</a>
 								</li>
 								<li>
-									<a href="register.php?p=1" class="slide-item">Add Local Staff</a>
+									<a href="#" class="slide-item">Add Local Staff</a>
 								</li>
 							</ul>
 						</li>

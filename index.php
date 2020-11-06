@@ -66,10 +66,6 @@ include_once 'config_2.php';
 
 		var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords must match.");return false;}}
 </script>
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
-
 </head>
 
     <body id="page" oncontextmenu="return false;">
@@ -82,7 +78,6 @@ include_once 'config_2.php';
             <li><span>Image 06</span><div><h3>unity in diversity</h3></div></li>
         </ul>
         <div class="container">
-            <div class="col-md-12"><?php error($errors); ?></div>
             <!-- Codrops top bar -->
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
@@ -99,6 +94,7 @@ include_once 'config_2.php';
             <header>
                 <h1>NIS<span> DIPLOMATIC MISSIONS </span>PORTAL</h1>
                 <h2>Automation & Integration of Foreign Missions</h2>
+                <p><?php error($errors); ?></p>
             </header>
         </div>
         
@@ -112,30 +108,41 @@ include_once 'config_2.php';
         					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         				</button>
                         <div align="center" id="modal-login-label"><h3>Sign in with Credentials</h3></div>
+                        <?php error($errors); ?>
         			</div>
         			<p></p>
         			<div class="modal-body">
         				<form action="index.php" method="post" onsubmit="return validateForm()">
-						<div class="form-group">
-                         <input type="text" name="username" placeholder="User ID" class="form-control" value="<?php echo stickyForm('username') ?>" autofocus required />
-                        </div>
 
-				        <div class="form-group">
-                         <input type="password" name="password" placeholder="Password" class="form-control" required />
-                        </div>
-                            
-                     	<button type="submit" class="btn btn-default">
+						<div class="form-group">
+                            <div class="col-md-2" ><label class="form-label">UserName</label></div>
+                            <div class="col-md-10">
+                         <input type="text" name="username" placeholder="" class="form-control" autofocus required />
+                            </div></div>
+                            &nbsp;
+                            <div class="form-group">
+                            <div class="col-md-2"><label class="form-label">Password</label></div>
+                            <div class="col-md-10">
+                         <input type="password" name="password" placeholder="" class="form-control" required />
+                            </div></div>
+                            &nbsp;
+                            <div id="html_element"></div>
+                            <div class="col-md-offset-5">
+                     	<button type="submit" class="btn-lg btn-default">
                         	<i class="fa fa-lock"></i> Login
                         </button>
                         <input type="hidden" name="loginuser" value="loginuser" />
+                       </div>
                     </form>
-        			</div>
-        			
+                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                                async defer>
+                        </script>
+                    </div>
         		</div>
         	</div>
         </div>
 
-        <div class="modal fade" id="modal-search" tabindex="1" role="document" aria-labelledby="modal-search-label" aria-hidden="true">
+        <div class="modal" id="modal-search" tabindex="1" role="document" aria-labelledby="modal-search-label" aria-hidden="true">
         	<div class="modal-dialog modal-dialog-centered modal-lg">
         		<div class="modal-content">
         			<div class="modal-header">
@@ -148,7 +155,7 @@ include_once 'config_2.php';
                         <form action="search.php?go" method="post" id="searchform">
 
                             <div class="form-group">
-                                <input type="text" class="form-control" name="search" placeholder="" />
+                                <input type="text" class="form-control" name="search" placeholder="city or country" />
                             </div>
                             <div class="form-group">
                                 <button type="submit" name="submit" class="btn btn-primary"> Search</button>

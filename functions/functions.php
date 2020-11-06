@@ -83,6 +83,16 @@ function success($message){
     }
 }
 
+function success1($reply){
+    if (!empty($reply)){
+        $output = "<div class='alert alert-success' role='alert'>";
+        $output .= $reply;
+        $output .= "</div>";
+
+        echo $output;
+    }
+}
+
 // User Authentication
 function loggedIn(){
 	return isset($_SESSION['us3rid']) ? true : false;

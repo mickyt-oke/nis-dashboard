@@ -1,7 +1,5 @@
 <?php require_once 'core/init.php'; ?>
-<?php require_once 'core/init2.php';
-
-?>
+<?php require_once 'core/init2.php'; ?>
 
 <?php include_once 'inc/header.php'; ?>
         <!-- Page content -->
@@ -13,6 +11,44 @@
 								</ol>
 							</div>
                 <!-- STAFF -->
+                            <!-- Default values for page -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card shadow">
+                                        <div class="card-header">
+                                            <h2 class="mb-0">Staff Record</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <?php $users = $profile->getProfile($_SESSION['profile']);
+                                              if (isset($profile)):
+                                             ?>
+                                            <div class="table-responsive">
+<table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
+<tr><th class="wd-15p">Full name</th><th class="wd-10p">Service No</th><th class="wd-15p">Rank</th><th class="wd-15p">Phone</th><th class="wd-20p">E-mail</th><th class="wd-20p">Mission</th><th class="wd-5p"></th></tr>
+                      <tbody>
+                      <?php $c=1; ?>
+                        <tr>
+                         <td><?php echo $users['firstname']." ".$users['lastname']; ?></td>
+                         <td><?php echo $users['nisno']; ?></td>
+                         <td><?php echo $users['rank']; ?></td>
+                         <td><?php echo $users['phone1']; ?></td>
+                         <td><?php echo $users['email']; ?></td>
+                         <td><?php echo $users['mission']; ?></td>
+                         <td><?php echo "<a class=\"btn btn-primary btn-sm\" title=\"preview " . htmlspecialchars_decode($users['firstname'], ENT_QUOTES) . "\"href=\"manage.php?preview=" . htmlspecialchars_decode($users['firstname'], ENT_QUOTES) . "\"><i class=\"side-menu__icon fe fe-eye\"></i> Manage</a>"; ?>
+                            <a class="btn btn-success btn-sm" href="#"><i class="side-menu__icon fe fe-edit"></i> &nbsp;Edit </a></td>
+                       </tr>
+                      </tbody>
+                    </table><?php endif;?>
+                  </div>
+                </div>
+               </div>
+              </div>
+            </div>
+
+
+
+        <!-- end of default -->
+
     <?php
         if (isset($_REQUEST['preview'])) {
 		//query the database
@@ -117,45 +153,6 @@
                     <?php }
                     }
                 ?>
-
-                    <!-- Default values for page -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h2 class="mb-0">Staff Record</h2>
-                </div>
-                <div class="card-body">
-                    <?php if (isset($_SESSION['profile'])) {
-
-                    //query the database
-                    $sql = mysqli_query($con,"SELECT `id`,`firstname`,`nisno`,`rank`,`email`,`mission`, `phone1` FROM profile WHERE mission='".$_SESSION['profile']."';");
-                                echo  '<div class="table-responsive">
-<table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
-<tr><th><i class="fa fa-check-square-o"></i></th><th class="wd-15p">Full name</th><th class="wd-10p">Service No</th><th class="wd-15p">Rank</th><th class="wd-15p">Phone</th><th class="wd-20p">E-mail</th><th class="wd-5p"></th></tr>';
-                    if (mysqli_num_rows($sql)== 0) {
-                        echo '<div style="\color:red\" class="\col-md-12"\>Result not found</div>';
-                    }
-                    else if ($r=mysqli_fetch_array($sql)){
-                        echo
-                            '<tbody><tr>
-                           <td style="display:none;">' . $r['id'] . '</td><td>' . $r['firstname'] . '</td><td>' . $r['nisno'] . '</td><td>' . $r['rank'] . '</td>
-                    <td>' . $r['phone1'] . '</td><td>' . $r['email'] . '</td><td>' . $r['mission'] . '</td><td><a class="btn btn-success btn-sm" href="">Manage</a></td></tr></tbody>';
-                    }
-                    ?>
-                    </table>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-                    <!-- end of default -->
-
-
 
                 <?php
                     if (isset($_REQUEST['edit'])) {

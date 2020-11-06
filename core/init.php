@@ -3,9 +3,16 @@
 //ini_set('display_startup_errors', 1);
 error_reporting(0);
 session_start();
+if(!(isset($_SESSION["profile"]))) {
+    $error[] = "Session Timeout. Please reauthenticate to continue";
+    header("Location:logout.php?session_expired=1");
+} else{
+
+}
 
 // Create and initialize variables
 $errors = array();
+
 // Define paths
 define("DS", DIRECTORY_SEPARATOR);
 define("APP_ROOT", dirname(dirname(__FILE__)).DS);
@@ -32,21 +39,10 @@ $con = new Connection();
 $entry = new Entry();
 $upload = new Upload();
 $session = new Session();
-$message = $session->message();
 $archive = new Archive();
 $visacat = new Visacat();
 
-
-restricted();
-if(!isset($_SESSION["profile"])) {
-    if(isLoginSessionExpired()) {
-        $error[] = "Session Timeout. Please reauthenticate to continue";
-        header("Location:logout.php?session_expired=1");
-    }
-}
-if (!isset($_SESSION['profile'])) {
-    $error[] = "Session Timeout. Please reauthenticate to continue";
-}
+$message = $session->message();
 
 // Obtain the filename of current page
 $page = basename($_SERVER['PHP_SELF']);

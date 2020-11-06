@@ -1,80 +1,72 @@
-<?php require_once 'core/init.php'; ?>
+<?php require_once 'core/init.php';
+              if (isset($_POST['visasub'])) {
+                  $required = array('month', 'year');
 
-    <?php require_once 'inc/header.php'; ?>
+                  foreach ($_POST as $key => $value) {
+                      if (empty($value) && in_array($key, $required)) {
 
-    <?php if(@$_GET['successful']) {
-        echo'<script>alert("'.@$_GET['successful'].'");</script>';
-        }
-    ?>
+                          $errors[] = "Complete all fields, please.";
+                          break;
+                      }
+                  }
+                  //if No errors
+                  if (empty($errors)) {
+                      $visacat->month = sanitize('month');
+                      $visacat->yearid = sanitize('year');
+                      $visacat->opn_bal = sanitize('opnbal');
+                      $visacat->diplomatic = sanitize('dip');
+                      $visacat->business = sanitize('bus');
+                      $visacat->tourist = sanitize('tou');
+                      $visacat->twp = sanitize('twp');
+                      $visacat->str = sanitize('str');
+                      $visacat->transit = sanitize('tra');
+                      $visacat->official = sanitize('off');
+                      $visacat->damage = sanitize('dam');
+                      $visacat->stockbal = sanitize('stkbal');
+                      $visacat->visa_rev = sanitize('rev');
+                      $visacat->comments = trim($_POST['message']);
+
+                      //validate and check errors
+                      if (is_int($visacat->tourist)) {
+                          $errors[] = "Values must be numbers only";
+                      }
+                  }
+
+                  if (empty($errors)) {
+                      if ($visacat->createVisa()) {
+                          $session->message("Visa Submission Successful. View Summary");
+                          redirectTo('dash.php');
+                      }
+                  }
+              }
+  ?>
+<?php require_once 'inc/header.php'; ?>
+
 <!-- Page content -->
-						<div class="container-fluid pt-8">
-							<div class="page-header mt-0 shadow p-3">
-								<ol class="breadcrumb mb-sm-0">
-									<li class="breadcrumb-item"><a href="dash.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Visa Returns Entry</li>
-								</ol>
-							</div>
-        <div class="row">
-          	<div class="col-md-12">
-				<h2>MONTHLY RETURNS ENTRY</h2>
-
-				<div class="card shadow">
-					<div class="card-body">
-							<div class="email-app card shadow">
-								<nav class="p-0">
-									<ul class="nav">
-										<li class="nav-item"><a class="nav-link mr-0 border-top" href="entry.php">Passport</a></li>
-                                        <li class="nav-item active"><a class="nav-link mr-0" href="#">Visa</a></li>
-                                        <!--<li class="nav-item"><a class="nav-link mr-0" href="add-new.php?p=4">Revenue</a></li> -->
-									</ul>
-								</nav>
-                                <!-- VISA entry start-->
-
-
-                                <?php
-                                if (isset($_POST['visasub'])) {
-                                    $required = array('month', 'year');
-
-                                    foreach ($_POST as $key => $value) {
-                                        if (empty($value) && in_array($key, $required)) {
-                                            $errors[] = "Complete all fields, please.";
-                                            break;
-                                        }
-                                    }
-                                    //if No errors
-                                    if (empty($errors)) {
-                                        $visacat->monthid = sanitize('month');
-                                        $visacat->yearid = sanitize('year');
-                                        $visacat->opn_bal = sanitize('opnbal');
-                                        $visacat->diplomatic = sanitize('dip');
-                                        $visacat->business = sanitize('bus');
-                                        $visacat->tourist = sanitize('tou');
-                                        $visacat->twp = sanitize('twp');
-                                        $visacat->str = sanitize('str');
-                                        $visacat->transit = sanitize('tra');
-                                        $visacat->official = sanitize('off');
-                                        $visacat->damage = sanitize('dam');
-                                        $visacat->stockbal = sanitize('stkbal');
-                                        $visacat->visa_rev = sanitize('rev');
-                                        $visacat->comments = trim($_POST['message']);
-
-                                        //validate and check errors
-                                        if (is_int($visacat->tourist)) {
-                                            $errors[] = "Values must be numbers only";
-                                        }
-                                    }
-
-                                    if (empty($errors)) {
-                                        if ($visacat->createVisa()) {
-                                            $session->message("Submission Successful");
-                                            header("Location: $ref?successful=visa-entry");
-                                        }
-                                    }
-                            }
-                                ?>
-
+<div class="container-fluid pt-8">
+    <div class="page-header mt-0 shadow p-3">
+        <ol class="breadcrumb mb-sm-0">
+            <li class="breadcrumb-item"><a href="dash.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Visa Returns Entry</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>MONTHLY RETURNS ENTRY</h2>
+            <?php success($message); ?>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="email-app card shadow">
+                        <nav class="p-0">
+                            <ul class="nav">
+                                <li class="nav-item"><a class="nav-link mr-0 border-top" href="entry.php">Passport</a></li>
+                                <li class="nav-item active"><a class="nav-link mr-0" href="#">Visa</a></li>
+                                <!--<li class="nav-item"><a class="nav-link mr-0" href="add-new.php?p=4">Revenue</a></li> -->
+                            </ul>
+                        </nav>
+                        <!-- VISA entry start-->
                                    <div class="inbox card-body">
-                                       <?php success($message); error($errors); ?>
+                                       <?php error($errors); ?>
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                         <div class="form-row mb-2">
                                             <h2 class="col-md-4">VISA RETURNS</h2>

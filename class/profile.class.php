@@ -43,13 +43,13 @@ class Profile {
 	}
 
 	// Read row(s) from the database table
-	public function getProfiles() {
-		$statement = $this->database->prepare("SELECT * FROM profile");
-		$statement->execute();
-		$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    public function getProfile($id) {
+        $statement = $this->database->prepare("SELECT * FROM profile WHERE id = :id");
+        $statement->execute(array("id"=>$id));
+        $result = $statement->fetch();
 
-		return $results ? $results : false;
-	}
+        return $result ? $result : false;
+    }
 
 	public function getName($profileid) {
 		$statement = $this->database->prepare("SELECT firstname FROM profile WHERE id = :profileid");

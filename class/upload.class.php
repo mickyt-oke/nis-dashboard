@@ -28,7 +28,7 @@
 			  $this->errors[] = $this->upload_errors[$file['error']];
 			  return false;
 			} else {
-				if(($file['type'] == 'image/jpg') || ($file['type'] == 'image/jpeg') || ($file['type'] == 'image/png') || ($file['type'] == 'image/pdf')) {
+				if(($file['type'] == 'image/jpg') || ($file['type'] == 'image/jpeg') || ($file['type'] == 'image/png')) {
 					 //File is an image
 					 // Set object attributes to the form parameters.
 					  $this->temp_path  = $file['tmp_name'];

@@ -56,8 +56,19 @@ class Entry {
 
 		return !empty($result['count']) ? $result['count'] : false;
 	}
+	public function countPptReturn($missionid) {
+	    $statement = $this->database->prepare("SELECT COUNT(missionid) AS count FROM tbl_ppt WHERE missionid = :mission");
+	    $statement->execute(array("mission->$missionid"));
+	    $result = $statement->fetch();
 
-	// Update row in table
+	    return $result ? $result : false;
+    }
+    public function getReturnbyMonth($missionid) {
+        $statement = $this->database->prepare("SELECT * FROM tbl_ppt WHERE missionid = :mission ORDER BY month DESC");
+        $statement->execute(array("mission"=>$missionid));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-	// Delete record from table
+        return $result ? $result : false;
+    }
+
 }

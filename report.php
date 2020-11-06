@@ -1,57 +1,59 @@
-<?php require_once 'core/init.php'; ?>
-<?php admin(); 
+<?php require_once 'core/init.php';
+      require_once 'core/init2.php';
+         admin();
         if (!isAdmin()){
         redirectTo ('dash.php');
         }
 ?>
 
-<?php include_once 'inc/header.php'; 
-?>
-<!-- Page content -->
-                        
-						<div class="container-fluid pt-8">
+<?php include_once 'inc/header-2.php'; ?>
+            <!-- Page content -->
+                <div class="container-fluid pt-8">
+
 							<div class="page-header mt-0 shadow p-3">
 								<ol class="breadcrumb mb-sm-0">
 									<li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Monthly Reports</li>
 								</ol>
-							</div> 
+							</div>
                             <div class="col-md-12">
-				                <h2>MONTHLY REPORT GENERATION</h2>	
+				                <h2>MONTHLY REPORT GENERATION</h2>
 	                           <a href="report.php?p=1"><button class="btn btn-default"><i class="fa fa-book"></i> MISSION</button></a>
 	                           <a href="report.php?p=2"><button class="btn btn-success"><i class="fa fa-globe"></i> CONTINENT</button></a>
                                 <div class="clearfix" style="margin-bottom: 20px;"></div>
-				            <div class="card shadow">
-                        <?php if(@$_GET['p']== 1){ ?>
+
+
+                    <div class="card shadow">
+                        <?php if(@$_GET['p']== 1) { ?>
 					   <div class="card-body">
                         <div><?php error($errors); success($message); ?></div>
-                           <form action="report.php?p=1" method="post">
+                           <form action="report.php?p=1&go" method="post">
                            <div class="nav-wrapper p-0">
 												<ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
 													<li class="nav-item">
 														<div class="form-group">
-												    <select class="form-control mission" name="mission" value="<?php echo stickyForm('mission'); ?>" required>
+												    <select class="form-control mission" name="search" value="<?php echo stickyForm('mission'); ?>" required>
 													<option value="">-- Choose Mission --</option>
 													<?php
 														$mission = $mission->getMissions();
                                                             foreach($mission as $mission) {
-		                                                      echo "<option value='".$mission['id']."'";
-		                                                      echo stickySelect('missionid', $mission['id']);
+		                                                      echo "<option value='".$mission['mission']."'";
+		                                                      echo stickySelect('missionid', $mission['mission']);
 		                                                      echo ">".$mission['mission']."</option>";
 														}
 													?>
 												    </select>
-											         </div>	
+											         </div>
                                                     </li>
 												    <li class="nav-item">
 														<div class="form-group">
-												    <select class="form-control month" name="month" value="<?php echo stickyForm('month'); ?>" required>
+												    <select class="form-control month" name="search" value="<?php echo stickyForm('month'); ?>" required>
 													<option value="">-- Choose Month --</option>
 													<?php
 														$month = $month->getMonth();
                                                             foreach($month as $month) {
-		                                                      echo "<option value='".$month['id']."'";
-		                                                      echo stickySelect('monthid', $month['id']);
+		                                                      echo "<option value='".$month['month']."'";
+		                                                      echo stickySelect('monthid', $month['month']);
 		                                                      echo ">".$month['month']."</option>";
 														}
 													?>
@@ -60,13 +62,13 @@
 													</li>
                                                     <li class="nav-item">
 														<div class="form-group">
-												    <select class="form-control year" name="year" value="<?php echo stickyForm('year'); ?>" required>
+												    <select class="form-control year" name="search" value="<?php echo stickyForm('year'); ?>" required>
 													<option value="">-- Choose Year --</option>
 													<?php
 														$year = $year->getYear();
                                                             foreach($year as $year) {
-		                                                      echo "<option value='".$year['id']."'";
-		                                                      echo stickySelect('yearid', $year['id']);
+		                                                      echo "<option value='".$year['year']."'";
+		                                                      echo stickySelect('yearid', $year['year']);
 		                                                      echo ">".$year['year']."</option>";
 														}
 													?>
@@ -78,11 +80,20 @@
 													</li>
 												</ul>
 											</div>
-                                        </form> 
+                                        </form>
                                </div>
-                                
-                            
-    
+
+            <?php if (isset($_POST['submit'])) {
+        if (isset($_GET['go'])) {
+            $search = $_POST['search'];
+
+        $sql = mysqli_query($con, "SELECT * FROM tbl_ppt WHERE mission ='".$search."' AND month = '".$search."' ");
+        if (mysqli_num_rows($sql) == 0) {
+            echo "<h3 align=\"center\">Result Not Found!</h3>";
+        }
+            else if ($r = mysqli_fetch_array($sql)) {
+        }
+            ?>
                             
        
                             <div class="row" id="print">
@@ -99,9 +110,9 @@
 											<div class="mb-0">
 												<div class="row border-bottom">
 													<div class="col-md-12">
-                                                        <div class="float-right"><h3 class="mb-0"><strong>For:</strong></h3></div>
+                                                        <div class="float-right"><h3 class="mb-0">FOR:<strong><?php echo $r['month']."  ".$r['year']; ?></strong></h3></div>
 														<div class="float-left">
-															<h4><strong>Mission:</strong></h4>
+															<h4>Mission: <strong><?php echo $r['mission']; ?></strong></h4>
 														</div>
 														
 													</div><!-- end col -->
@@ -126,38 +137,20 @@
 																</thead>
 																<tbody>
 																	<tr>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td class="text-right"></td>
+                                                                        <td><strong>32 PAGES</strong></td>
+																		<td><?php echo $r['opn_bal_32']; ?></td>
+																		<td><?php echo $r['ppt_32']; ?></td>
+																		<td><?php echo $r['dam_32']; ?></td>
+																		<td><?php echo $r['stock_bal_32']; ?></td>
+																		<td class="text-right"><?php echo $r['ppt_rev_32']; ?></td>
 																	</tr>
-																</tbody>
-															</table>
-														</div>
-                                                        <hr />
-                                                        <h3 style="text-align: center"><strong>ETC MONTHLY RETURNS</strong></h3>
-														<div class="table-responsive">
-															<table class="table table-bordered m-t-30 text-nowrap">
-																<thead >
-																	<tr>
-                                                                        
-																		<th>Opening Balance</th>
-																		<th>Issuance</th>
-																		<th>Damaged</th>
-																		<th>Balance in stock</th>
-																		<th class="text-right">Revenue(USD)</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td class="text-right"></td>
+                                                                    <tr>
+                                                                        <td><strong>64 PAGES</strong></td>
+																		<td><?php echo $r['opn_bal_64']; ?></td>
+																		<td><?php echo $r['ppt_64']; ?></td>
+																		<td><?php echo $r['dam_64']; ?></td>
+																		<td><?php echo $r['stock_bal_64']; ?></td>
+																		<td class="text-right"><?php echo $r['ppt_rev_64']; ?></td>
 																	</tr>
 																</tbody>
 															</table>
@@ -277,7 +270,9 @@
 								</div>
 							</div>
                     <?php 
-                        } 
+                        }
+                }
+                        }
         ?>            
                 <?php if(@$_GET['p']== 2){ ?>
                     <div class="card-body">

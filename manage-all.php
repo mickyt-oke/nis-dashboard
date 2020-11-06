@@ -31,7 +31,7 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<h2 class="modal-title" id="largeModalLabel">PROFILE OF <?php echo $x['first_name']; ?></h2>
-											<a href="manage.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<a href="manage-all.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
                                                 </button></a>
 										</div>
@@ -102,7 +102,7 @@
 													</div>
 										</div>
 										<div class="modal-footer">
-                                            <a href="manage.php"><button type="button" class="btn btn-secondary">Close</button></a>
+                                            <a href="manage-all.php"><button type="button" class="btn btn-secondary">Close</button></a>
 										</div>
 									</div>
 								</div>
@@ -127,7 +127,7 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<h2 class="modal-title" id="largeModalLabel">PROFILE OF <?php echo $p['firstname']; ?></h2>
-											<a href="manage.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<a href="manage-all.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
                                                 </button></a>
 										</div>
@@ -208,7 +208,7 @@
 													</div>
 										</div>
 										<div class="modal-footer">
-                                            <a href="manage.php"><button type="button" class="btn btn-secondary">Close</button></a>
+                                            <a href="manage-all.php"><button type="button" class="btn btn-secondary">Close</button></a>
 										</div>
 									</div>
 								</div>
