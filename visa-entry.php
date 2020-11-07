@@ -35,7 +35,7 @@
                   if (empty($errors)) {
                       if ($visacat->createVisa()) {
                           $session->message("Visa Submission Successful. View Summary");
-                          redirectTo('dash.php');
+                          header('Location: dash.php');
                       }
                   }
               }
