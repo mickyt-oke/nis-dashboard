@@ -35,7 +35,8 @@
                          <td><?php echo $users['email']; ?></td>
                          <td><?php echo $users['mission']; ?></td>
                          <td><?php echo "<a class=\"btn btn-primary btn-sm\" title=\"preview " . htmlspecialchars_decode($users['firstname'], ENT_QUOTES) . "\"href=\"manage.php?preview=" . htmlspecialchars_decode($users['firstname'], ENT_QUOTES) . "\"><i class=\"side-menu__icon fe fe-eye\"></i> Manage</a>"; ?>
-                            <a class="btn btn-success btn-sm" href="#"><i class="side-menu__icon fe fe-edit"></i> &nbsp;Edit </a></td>
+                         </td>
+                           <!-- <a class="btn btn-success btn-sm" href="#"><i class="side-menu__icon fe fe-edit"></i> &nbsp;Edit </a> -->
                        </tr>
                       </tbody>
                     </table><?php endif;?>

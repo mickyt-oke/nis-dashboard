@@ -1,31 +1,36 @@
 <?php require_once 'core/init.php'; ?>
-              <?php if (isset($_POST['returns'])) {
-                                    $required = array('month', 'year');
-            
-                                    foreach($_POST as $key=>$value) {
-                                    if (empty($value) && in_array($key, $required)) {
-                                     $errors[] = "Complete all fields, please.";
-                                        break;
-                                    }
+
+<?php
+        if (isset($_POST['returns'])) {
+            $required = array('month', 'year');
+
+            foreach($_POST as $key=>$value) {
+                if (empty($value) && in_array($key, $required)) {
+
+                $errors[] = "Complete all fields, please.";
+                break;
+            }
                                     //if ($value->rowCount() > 0) {
                                     // $errors[] = "Record already exists in database. Check again.";
                                   //}
-                                }
+            //
+
+        }
                                 //if No errors
                                 if (empty($errors)) {
-                                 $entry->month = sanitize('month');
-                                 $entry->year = sanitize('year');
-                                 $entry->opn_bal_32 = sanitize('bal32');
-                                 $entry->opn_bal_64 = sanitize('bal64');
-                                 $entry->ppt_32 = sanitize('issue32');
-                                 $entry->ppt_64 = sanitize('issue64');
-                                 $entry->dam_32 = sanitize('dam32');
-                                 $entry->dam_64 = sanitize('dam64');
-                                 $entry->ppt_rev_32 = sanitize('ppt_revenue32');
-                                 $entry->ppt_rev_64 = sanitize('ppt_revenue64');
-                                 $entry->comments = trim($_POST['message']);
-                                 $entry->stock_bal_32 = sanitize('stockbal32');
-                                 $entry->stock_bal_64 = sanitize('stockbal64');
+                                    $entry->month = sanitize('month');
+                                    $entry->year = sanitize('year');
+                                    $entry->opn_bal_32 = sanitize('bal32');
+                                    $entry->opn_bal_64 = sanitize('bal64');
+                                    $entry->ppt_32 = sanitize('issue32');
+                                    $entry->ppt_64 = sanitize('issue64');
+                                    $entry->dam_32 = sanitize('dam32');
+                                    $entry->dam_64 = sanitize('dam64');
+                                    $entry->ppt_rev_32 = sanitize('ppt_revenue32');
+                                    $entry->ppt_rev_64 = sanitize('ppt_revenue64');
+                                    $entry->comments = trim($_POST['message']);
+                                    $entry->stock_bal_32 = sanitize('stockbal32');
+                                    $entry->stock_bal_64 = sanitize('stockbal64');
 
                                     // Check for more errors
                                     /*
@@ -48,15 +53,15 @@
                                     if (is_integer($entry->ppt_rev_64)) {
                                         $errors[] = "Input figures only. Special chars not allowed (32 pages)";
                                     }
-							}
-                            
-                        if (empty($errors)) {
-                            if ($entry->createEntry()) {
-                                $session->message("Passport Submission Successful. Continue");
-                                header('Location: entry.php');
+
+                                    if (empty($errors)) {
+                                        if ($entry->createEntry()) {
+                                            $session->message("Passport Submission Successful. Continue");
+                                            header('Location: entry.php');
+                                        }
+                                    }
+                                }
                             }
-                        }
-                }
                 ?>
 <?php require_once 'inc/header.php'; ?>
     <!-- Page content -->

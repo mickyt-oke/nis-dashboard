@@ -1,47 +1,49 @@
-<?php require_once 'core/init.php';
-              if (isset($_POST['visasub'])) {
-                  $required = array('month', 'year');
+<?php require_once 'core/init.php'; ?>
 
-                  foreach ($_POST as $key => $value) {
-                      if (empty($value) && in_array($key, $required)) {
+<?php
+    if (isset($_POST['visasub'])) {
+        $required = array('month', 'year');
 
-                          $errors[] = "Complete all fields, please.";
-                          break;
-                      }
-                  }
-                  //if No errors
-                  if (empty($errors)) {
-                      $visacat->month = sanitize('month');
-                      $visacat->yearid = sanitize('year');
-                      $visacat->opn_bal = sanitize('opnbal');
-                      $visacat->diplomatic = sanitize('dip');
-                      $visacat->business = sanitize('bus');
-                      $visacat->tourist = sanitize('tou');
-                      $visacat->twp = sanitize('twp');
-                      $visacat->str = sanitize('str');
-                      $visacat->transit = sanitize('tra');
-                      $visacat->official = sanitize('off');
-                      $visacat->damage = sanitize('dam');
-                      $visacat->stockbal = sanitize('stkbal');
-                      $visacat->visa_rev = sanitize('rev');
-                      $visacat->comments = trim($_POST['message']);
+        foreach ($_POST as $key => $value) {
+            if (empty($value) && in_array($key, $required)) {
 
-                      //validate and check errors
-                      if (is_int($visacat->tourist)) {
-                          $errors[] = "Values must be numbers only";
-                      }
-                  }
+                $errors[] = "Complete all fields, please.";
+                break;
+            }
+        }
+        //if No errors
+        if (empty($errors)) {
+            $visacat->month = sanitize('month');
+            $visacat->yearid = sanitize('year');
+            $visacat->opn_bal = sanitize('opnbal');
+            $visacat->diplomatic = sanitize('dip');
+            $visacat->business = sanitize('bus');
+            $visacat->tourist = sanitize('tou');
+            $visacat->twp = sanitize('twp');
+            $visacat->str = sanitize('str');
+            $visacat->transit = sanitize('tra');
+            $visacat->official = sanitize('off');
+            $visacat->damage = sanitize('dam');
+            $visacat->stockbal = sanitize('stkbal');
+            $visacat->visa_rev = sanitize('rev');
+            $visacat->comments = trim($_POST['message']);
 
-                  if (empty($errors)) {
-                      if ($visacat->createVisa()) {
-                          $session->message("Visa Submission Successful. View Summary");
-                          header('Location: dash.php');
-                      }
-                  }
-              }
-  ?>
+            //validate and check errors
+            if (is_integer($visacat->tourist)) {
+                $errors[] = "Values must be numbers only";
+            }
+
+            if (empty($errors)) {
+                if ($visacat->createVisa()) {
+                    $session->message("Visa Submission Successful. <a href='dash.php'>View Summary</a>");
+                    header('Location: visa-entry.php');
+                }
+            }
+        }
+    }
+    ?>
+
 <?php require_once 'inc/header.php'; ?>
-
 <!-- Page content -->
 <div class="container-fluid pt-8">
     <div class="page-header mt-0 shadow p-3">
@@ -66,7 +68,6 @@
                         </nav>
                         <!-- VISA entry start-->
                                    <div class="inbox card-body">
-                                       <?php error($errors); ?>
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                         <div class="form-row mb-2">
                                             <h2 class="col-md-4">VISA RETURNS</h2>
@@ -185,7 +186,7 @@
                                                 <button type="reset" value="reset" class="btn btn-sm btn-light mt-1 mb-1">Clear</button>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="visasub" value="visasub">
+                                        <input type="hidden" name="visasub" value="visareturn">
                                     </form>
                                     </div>
                             </div>

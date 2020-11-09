@@ -57,13 +57,13 @@
 							<a class="side-menu__item active" href="dash.php"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
 						</li>
 						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Returns</span><i class="angle fa fa-angle-right"></i></a>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Add Returns</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="entry.php" class="slide-item">Add Returns</a>
+									<a href="entry.php" class="slide-item">Passport Returns</a>
 								</li>
                                 <li>
-									<a href="#" class="slide-item">Manage Returns</a>
+									<a href="visa-entry.php" class="slide-item">Visa Returns</a>
 								</li>
                                
 							</ul>
@@ -120,10 +120,10 @@
 									<a href="#" class="slide-item">Search</a>
 								</li>
 							</ul>
-						</li>
+						</li> -->
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Stock Management</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
+							<!--<ul class="slide-menu">
 								<li>
 									<a href="#" class="slide-item">Passport Inventory </a>
 								</li>
@@ -133,12 +133,12 @@
 								<li>
 									<a href="#" class="slide-item">Assets Inventory </a>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 						 <li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Channels</span><i class="angle fa fa-angle-right"></i></a>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Feedback Channels</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
-								<li>
+								<!--<li>
 									<a href="#" class="slide-item">Helpdesk</a>
 								</li>
 								<li>

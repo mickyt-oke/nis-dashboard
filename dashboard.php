@@ -154,7 +154,7 @@ if (!isAdmin()){
 											<div class="row align-items-center">
 												<div class="col">
 													<h6 class="text-uppercase text-light ls-1 mb-1">oVERVIEW</h6>
-													<h2 class="mb-0">2019 ANNUAL RETURNS STATISTICS</h2>
+													<h2 class="mb-0">2020 RETURNS STATISTICS</h2>
 												</div>
 											</div>
 										</div>
@@ -165,7 +165,7 @@ if (!isAdmin()){
 													<div class="card socailicons bg-success">
 														<div class="card-body  mb-0">
 															<small class="social-title">Issued Passports</small>
-															<h3 class="text-xl text-white  mb-0">194,869</h3>
+															<h3 class="text-xl text-white  mb-0"></h3>
 															<i class="fab fa-book-open"></i>
 														</div>
 													</div>
@@ -174,7 +174,7 @@ if (!isAdmin()){
                                                     <div class="card socailicons facebook-like1 mb-sm-0">
                                                         <div class="card-body  mb-0">
                                                             <small class="social-title">Issued Visas</small>
-                                                            <h3 class="text-xl text-white  mb-0">86,258</h3>
+                                                            <h3 class="text-xl text-white  mb-0"></h3>
                                                             <i class="fab fa-book"></i>
                                                         </div>
                                                     </div>
@@ -183,7 +183,7 @@ if (!isAdmin()){
 													<div class="card socailicons bg-danger">
 														<div class="card-body  mb-0">
 															<small class="social-title">Revenue (Passports & Visas) </small>
-															<h3 class="text-xl text-white  mb-0">$ 41,046,279</h3>
+															<h3 class="text-xl text-white  mb-0">$ </h3>
 															<i class="fab fa-book"></i>
 														</div>
 													</div>

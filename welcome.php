@@ -119,8 +119,6 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 					<li class="breadcrumb-item active" aria-current="page">Welcome</li>
 				</ol>
 			</div>
-			<?php error($errors);
-                      success($message); ?>
             <div class=" row">
                 <div class="col-md-12">
                     <div class="card-profile overflow-hidden">

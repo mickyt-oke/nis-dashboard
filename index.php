@@ -81,7 +81,7 @@ include_once 'config_2.php';
             <!-- Codrops top bar -->
             <div class="codrops-top">
                 <a href="#" class="launch-modal" data-modal-id="modal-search">
-                    <strong>DIPLOMATIC DESK DIRECTORY LISTING</strong></a>
+                    <strong></strong></a>
 
                 <span class="right">
                     <a class="launch-modal" href="#" data-modal-id="modal-login">
@@ -141,7 +141,7 @@ include_once 'config_2.php';
         		</div>
         	</div>
         </div>
-
+        <!--
         <div class="modal" id="modal-search" tabindex="1" role="document" aria-labelledby="modal-search-label" aria-hidden="true">
         	<div class="modal-dialog modal-dialog-centered modal-lg">
         		<div class="modal-content">
@@ -152,7 +152,7 @@ include_once 'config_2.php';
                         <h3 id="modal-search-label">Search By Mission or Country</h3>
                     </div>
                     <div class="modal-body" align="center">
-                        <form action="search.php?go" method="post" id="searchform">
+                        <form action="" method="post" id="searchform">
 
                             <div class="form-group">
                                 <input type="text" class="form-control" name="search" placeholder="city or country" />
@@ -165,6 +165,7 @@ include_once 'config_2.php';
             </div>
         </div>
         </div>
+        -->
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -15,7 +15,70 @@ if (!isAdmin()){
 									<li class="breadcrumb-item active" aria-current="page">Manage Returns</li>
 								</ol>
 							</div>
+                            <?php if (isset($_REQUEST['preview'])) {
+                                $sqlquery = mysqli_query($con, "SELECT * FROM tbl_ppt WHERE missionid='" . htmlspecialchars($_REQUEST['preview'], ENT_QUOTES) . "' ");
 
+                                if(mysqli_num_rows($sqlquery) == 0) {
+                                    echo "<h3 style=\"color:#0000cc;text-align:center;\">No Information to display..!</h3>";
+                                }
+                                else if ($p = mysqli_fetch_array($sqlquery)) {
+                                    ?>
+                                    <div class="modal-dialog modal-lg" role="document" tabindex="1">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2 class="modal-title" ><?php echo $p['missionid']; ?> PASSPORT RETURN SUMMARY</h2>
+                                                <button type="button" class="close" aria-label="Close">
+                                                    <a href="return-manager.php"><span aria-hidden="true">&times;</span></a>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered m-t-30 text-nowrap">
+                                                        <thead >
+                                                        <tr>
+                                                            <th>Type</th>
+                                                            <th>32 pages</th>
+                                                            <th>64 pages</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td><strong>Opening Balance</strong></td>
+                                                            <td><?php echo $p['opn_bal_32']; ?></td>
+                                                            <td><?php echo $p['opn_bal_64']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Issuance</strong></td>
+                                                            <td><?php echo $p['ppt_32']; ?></td>
+                                                            <td><?php echo $p['ppt_64']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Damaged</strong></td>
+                                                            <td><?php echo $p['dam_32']; ?></td>
+                                                            <td><?php echo $p['dam_64']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Balance</strong></td>
+                                                            <td><?php echo $p['stock_bal_32']; ?></td>
+                                                            <td><?php echo $p['stock_bal_64']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Revenue ($USD)</strong></td>
+                                                            <td><?php echo $p['ppt_rev_32']; ?></td>
+                                                            <td><?php echo $p['ppt_rev_64']; ?></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php }
+                            }
+                            ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow">
@@ -31,7 +94,7 @@ if (!isAdmin()){
                          <table id="example" class="table table-striped table-bordered w-100 text-nowrap">
                             <thead>
                                 <th class="wd-5p">mission</th>
-                                <th class="wd-10p">Month</th>
+                                <th class="wd-10p">DATE</th>
                                 <th class="wd-25p">32p Opening</th>
                                 <th class="wd-25p">64p Opening </th>
                                 <th class="wd-25p">32p Issuance</th>
@@ -47,14 +110,14 @@ if (!isAdmin()){
                ?>
                             <tr>
                                 <td><?php echo $result['missionid']; ?></td>
-                                <td><?php echo $result['month']; ?></td>
+                                <td><?php echo $result['month']." ".$result['year']; ?></td>
                                 <td><?php echo $result['opn_bal_32']; ?></td>
                                 <td><?php echo $result['opn_bal_64']; ?></td>
                                 <td><?php echo $result['ppt_32']; ?></td>
                                 <td><?php echo $result['ppt_64']; ?></td>
                                 <td><?php echo $result['stock_bal_32']; ?></td>
                                 <td><?php echo $result['stock_bal_64']; ?></td>
-                                <td class="text-success" align="center"><i class="fa-2x fa fa-book-open"></i></td>
+                                <td class="text-success" align="center"><?php echo "<a title=\"preview " . htmlspecialchars_decode($result['missionid'], ENT_QUOTES) . "\" href=\"return-manager.php?preview=" . htmlspecialchars_decode($result['missionid'], ENT_QUOTES) . "\" ><i class=\"fa-2x fa fa-book-open\" /></a>"; ?></td>
                             </tr>
                             <?php } ?>
                             </tbody>
@@ -71,12 +134,15 @@ if (!isAdmin()){
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+                        <?php
+                        $query = mysqli_query($con, "SELECT * FROM tbl_visa_class ;");
+                        $x=1;
+                        ?>
                         <table id="example1" class="table table-striped table-bordered w-100 text-nowrap">
                             <thead>
                             <tr>
-                                <th class="wd-5p">MONTH</th>
-                                <th class="wd-5p">Year</th>
-                                <th class="wd-10p">Total Issued</th>
+                                <th class="wd-5p">Mission</th>
+                                <th class="wd-5p">Date</th>
                                 <th class="wd-10p">Diplomatic</th>
                                 <th class="wd-10p">Business</th>
                                 <th class="wd-10p">Tourist</th>
@@ -84,25 +150,29 @@ if (!isAdmin()){
                                 <th class="wd-10p">STR</th>
                                 <th class="wd-10p">Transit</th>
                                 <th class="wd-10p">Official</th>
-                                <th class="wd-10p">Submitted</th>
+                                <th class="wd-10p">Total Issued</th>
                                 <th>view</th>
                             </tr>
                             </thead>
                             <tbody>
+                             <?php
+                while ($r = mysqli_fetch_array($query))
+                {
+               ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $r['missionid']; ?></td>
+                                <td><?php echo $r['month']." ".$r['yearid']; ?></td>
+                                <td><?php echo $r['diplomatic']; ?></td>
+                                <td><?php echo $r['business']; ?></td>
+                                <td><?php echo $r['tourist']; ?></td>
+                                <td><?php echo $r['twp']; ?></td>
+                                <td><?php echo $r['str']; ?></td>
+                                <td><?php echo $r['transit']; ?></td>
+                                <td><?php echo $r['official']; ?></td>
+                                <td style><?php echo $r['diplomatic'] + $r['tourist'] + $r['business'] + $r['transit'] + $r['str'] + $r['twp'] + $r['official']; ?></td>
                                 <td class="text-red" align="center"><i class="fa-2x fa fa-book-open"></i></td>
                             </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -142,7 +212,7 @@ if (!isAdmin()){
                 </div>
             </div>
         </div> -->
-
+        <!--
         <div class="col-lg-12">
             <div class="card shadow ">
                 <div class="card-header bg-gradient-orange">
@@ -178,7 +248,7 @@ if (!isAdmin()){
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 <?php include_once 'inc/footer.php';  ?>
